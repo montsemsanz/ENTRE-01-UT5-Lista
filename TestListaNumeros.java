@@ -16,17 +16,17 @@ public class TestListaNumeros
         testAdd(lista);
         testToString(lista);
 
-        //testSegundoMaximo(lista);
+        testSegundoMaximo(lista);
 
         System.out.println();
         lista.vaciarLista();
         lista.addElemento(9);
         testToString(lista);
 
-        //testSegundoMaximo(lista);
+        testSegundoMaximo(lista);
         lista.addElemento(9);
         testToString(lista);
-        //testSegundoMaximo(lista);    
+        testSegundoMaximo(lista);    
         System.out.println();
 
         separador();
@@ -53,22 +53,21 @@ public class TestListaNumeros
         for (int i = 0; i < valores.length; i++) {
             lista.addElemento(valores[i]);
         }
-
     }
 
     public static void testToString(ListaNumeros lista) {
         System.out.println(lista.toString());
     }
 
-    //public static void testSegundoMaximo(ListaNumeros lista) {        
-    // int segundo = lista.segundoMaximo();
-    // if (segundo == Integer.MIN_VALUE) {
-    //  System.out.println("No hay segundo máximo\n");
-    // }
-    // else {
-    //  System.out.println("El valor segundo máximo es : " + segundo);
-    // }
-    //}
+    public static void testSegundoMaximo(ListaNumeros lista) {        
+        int segundo = lista.segundoMaximo();
+        if (segundo == Integer.MIN_VALUE) {
+            System.out.println("No hay segundo máximo\n");
+        }
+        else {
+            System.out.println("El valor segundo máximo es : " + segundo);
+        }
+    }
 
     //public static void testSegundosPrincipio(ListaNumeros lista) {
     // System.out.println("Después de colocar los segundos máximos al principio");

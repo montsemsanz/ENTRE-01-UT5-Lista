@@ -96,11 +96,11 @@ public class ListaNumeros {
         }
         str += "\n";
         str += escribirLineas();
-        
+
         if (pos == 0) {
             str = "";
         }
-        
+
         return str;
     }
 
@@ -137,9 +137,29 @@ public class ListaNumeros {
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
      * la lista
      */
-    public void segundoMaximo() {       
-        //TODO
-
+    public int segundoMaximo() {       
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < pos; i++) {
+            if (lista[i] > max) {
+                max = lista[i];
+            }
+            if (lista[i] < min) {
+                min = lista[i];
+            }
+        }
+        for (int i = 0; i < pos; i++) {
+            if (lista[i] < max && lista[i] > min) {
+                min = lista[i];
+            }
+        }
+        
+        if (max == min) {
+            min = Integer.MIN_VALUE;
+        }
+        
+        max = min;
+        return max;
     }
 
     /**
