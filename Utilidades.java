@@ -18,7 +18,5 @@ public class Utilidades
         int derecha = espacios / 2 + espacios % 2;
         return String.format("%" + izquierda + "s%s%"  + derecha + "s", 
                         "", String.valueOf(n), "");
-        
-         
     }
 }
