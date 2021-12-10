@@ -68,16 +68,17 @@ public class ListaNumeros {
     /**
      * @return el nº de elementos realmente guardados en la lista
      */
-    public void getTotalNumeros() {
-        //TODO
-
+    public int getTotalNumeros() {
+        return pos;
     }
 
     /**
      * Vacía la lista
      */
     public void vaciarLista() {
-        //TODO
+        //for (int i = 0; i < lista.length; i++) {
+        //    lista[i] = 0;
+        //}
     }
 
     /**
@@ -87,12 +88,32 @@ public class ListaNumeros {
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-        //TODO
-
-       
-        return "";
+        String str = "";
+        str += escribirLineas();
+        str += "\n";
+        for(int j = 0; j < pos; j++) {
+            str += Utilidades.centrarNumero(lista[j], ANCHO_FORMATO);  
+        }
+        str += "\n";
+        str += escribirLineas();
+        
+        if (pos == 0) {
+            str = "";
+        }
+        
+        return str;
     }
 
+    /**
+     * 
+     */
+    private String escribirLineas() {
+        String str = "";
+        for (int i = 0; i < pos * ANCHO_FORMATO; i++) {
+            str += CAR_CABECERA;    
+        }
+        return str;
+    }
 
     /**
      * Mostrar en pantalla la lista
@@ -120,6 +141,7 @@ public class ListaNumeros {
         //TODO
 
     }
+
     /**
      * El método coloca los valores que son segundos máximos al principio de
      * la lista respetando el orden de aparición del resto de elementos
@@ -140,7 +162,6 @@ public class ListaNumeros {
     public void segundosMaximosAlPrincipio() {
         //TODO
 
-
     }
 
     /**
@@ -156,7 +177,6 @@ public class ListaNumeros {
     public void buscarBinario() {
         //TODO
 
-
     }
 
     /**
@@ -169,7 +189,6 @@ public class ListaNumeros {
      */
     public void crearBrillos() {
         //TODO
-
 
     }
 
@@ -188,7 +207,5 @@ public class ListaNumeros {
     public void detectarEstrellas() {
         //TODO
 
-       
     }
-
 }
