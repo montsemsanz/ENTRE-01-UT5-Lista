@@ -53,18 +53,16 @@ public class ListaNumeros {
      * @return true si la lista está completa, false en otro caso
      * Hacer sin if
      */
-    public void estaCompleta() {
-        //TODO
-
+    public boolean estaCompleta() {
+        return pos == lista.length;
     }
 
     /**
      * @return true si la lista está vacía, false en otro caso.
      * Hacer sin if
      */
-    public void estaVacia() {
-        //TODO
-
+    public boolean estaVacia() {
+        return pos == 0;
     }
 
     /**
