@@ -38,33 +38,36 @@ public class ListaNumeros {
      * @param numero el valor que se añade.  
      * @return true si se ha podido añadir, false en otro caso
      */
-    public void addElemento() {
-        //TODO
-
+    public boolean addElemento(int numero) {
+        if(lista.length > pos)   {
+            lista[pos] = numero;
+            pos++;
+            return true;
+        }
+        return false;
     }
     /**
      * @return true si la lista está completa, false en otro caso
      * Hacer sin if
      */
-    public void estaCompleta() {
-        //TODO
-
+    public boolean estaCompleta() {
+        return pos == lista.length;
     }
 
     /**
      * @return true si la lista está vacía, false en otro caso.
      * Hacer sin if
      */
-    public void estaVacia() {
-        //TODO
+    public boolean estaVacia() {
+        return pos == 0;
 
     }
 
     /**
      * @return el nº de elementos realmente guardados en la lista
      */
-    public void getTotalNumeros() {
-        //TODO
+    public int getTotalNumeros() {
+        return pos;
 
     }
 
@@ -72,7 +75,8 @@ public class ListaNumeros {
      * Vacía la lista
      */
     public void vaciarLista() {
-        //TODO
+        lista = new int[0];
+        pos = 0;
     }
 
     /**
