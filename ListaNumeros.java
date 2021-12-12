@@ -1,3 +1,4 @@
+import java.util.Random;
 /**
  * Un objeto de esta clase
  * guarda una lista de números enteros
@@ -7,11 +8,8 @@
  * y dos  métodos estáticos para trabajar con
  * arrays de dos dimensiones
  *
- * @author -
+ * @author - Asier Loayza
  */
-
-
-import java.util.Random;
 
 public class ListaNumeros {
     public static final int DIMENSION = 10;
@@ -19,10 +17,8 @@ public class ListaNumeros {
     public static final char CAR_CABECERA = '-';
 
     private static final Random generador = new Random();
-    //TODO
-    
-    
-
+    private int[] lista;
+    private int pos;
     /**
      * Constructor de la clase ListaNumeros
      * Crea e inicializa adecuadamente los
@@ -30,9 +26,9 @@ public class ListaNumeros {
      *
      * @param n el tamaño máximo de la lista
      */
-    public ListaNumeros() {
-        //TODO
-        
+    public ListaNumeros(int n) {
+        lista = new int[n];
+        pos = 0;
     }
 
     /**
@@ -44,11 +40,8 @@ public class ListaNumeros {
      */
     public void addElemento() {
         //TODO
-        
-        
 
     }
-
     /**
      * @return true si la lista está completa, false en otro caso
      * Hacer sin if
@@ -63,7 +56,7 @@ public class ListaNumeros {
      * Hacer sin if
      */
     public void estaVacia() {
-       //TODO
+        //TODO
 
     }
 
@@ -79,7 +72,7 @@ public class ListaNumeros {
      * Vacía la lista
      */
     public void vaciarLista() {
-       //TODO
+        //TODO
     }
 
     /**
@@ -89,14 +82,10 @@ public class ListaNumeros {
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-       //TODO
-       
-       
-       
-       return "";
-    }
+        //TODO
 
-     
+        return "";
+    }
 
     /**
      * Mostrar en pantalla la lista
@@ -121,9 +110,8 @@ public class ListaNumeros {
      * la lista
      */
     public void segundoMaximo() {       
-       //TODO
+        //TODO
 
-        
     }
 
     /**
@@ -145,11 +133,8 @@ public class ListaNumeros {
      */
     public void segundosMaximosAlPrincipio() {
         //TODO
-        
-        
 
     }
-
     /**
      * @param numero búsqueda binaria de  numero en lista
      * @return devuelve -1 si no se encuentra o la posición en la que aparece
@@ -161,12 +146,9 @@ public class ListaNumeros {
      * Usa exclusivamente métodos de la clase Arrays
      */
     public void buscarBinario() {
-         //TODO
-         
-         
+        //TODO
 
     }
-
     /**
      * 
      * @return devuelve un array bidimensional de enteros de tamaño DIMENSION
@@ -176,12 +158,9 @@ public class ListaNumeros {
      * 
      */
     public void crearBrillos() {
-       //TODO
-       
-       
+        //TODO
 
     }
-
     /**
      * @param  un array bidimensional brillos 
      * @return un nuevo array bidimensional de valores booleanos
@@ -195,10 +174,7 @@ public class ListaNumeros {
      * Nota -  No hay estrellas en los bordes del array brillos
      */
     public void detectarEstrellas() {
-       //TODO
-       
-       
-       
-    }
+        //TODO
 
+    }
 }
