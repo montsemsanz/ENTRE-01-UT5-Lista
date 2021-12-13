@@ -81,7 +81,7 @@ public class ListaNumeros {
      * Vacía la lista
      */
     public void vaciarLista() {
-       //TODO
+       pos = 0;
     }
 
     /**
