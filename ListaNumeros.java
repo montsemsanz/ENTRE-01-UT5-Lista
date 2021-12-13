@@ -43,9 +43,13 @@ public class ListaNumeros {
      * @param numero el valor que se añade.  
      * @return true si se ha podido añadir, false en otro caso
      */
-    public void addElemento() {
-        //TODO
-        
+    public boolean addElemento(int numero) {
+        if(!estaCompleta()){
+            lista[pos] = numero;
+            pos++;
+            return true;
+        }
+        return false;
         
 
     }
