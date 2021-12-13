@@ -1,3 +1,4 @@
+import java.util.Random;
 /**
  * Un objeto de esta clase
  * guarda una lista de números enteros
@@ -7,11 +8,11 @@
  * y dos  métodos estáticos para trabajar con
  * arrays de dos dimensiones
  *
- * @author -
+ * @author - Asier Galisteo
  */
 
 
-import java.util.Random;
+
 
 public class ListaNumeros {
     public static final int DIMENSION = 10;
@@ -19,8 +20,8 @@ public class ListaNumeros {
     public static final char CAR_CABECERA = '-';
 
     private static final Random generador = new Random();
-    //TODO
-    
+    private int[] lista;
+    private int pos;
     
 
     /**
