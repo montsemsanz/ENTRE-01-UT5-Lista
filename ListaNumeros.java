@@ -114,9 +114,24 @@ public class ListaNumeros {
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
      * la lista
      */
-    public void segundoMaximo() {       
-        //TODO
-
+    public int segundoMaximo() {       
+        int primerMaximo = lista[0];
+        int segundoMaximo = Integer.MIN_VALUE;
+        for(int i = 1; i < pos; i++){
+            if(lista[i] > primerMaximo){
+                segundoMaximo = primerMaximo;
+                primerMaximo = lista[i];
+            }
+            else if(lista[i] == primerMaximo){
+                primerMaximo = lista[i];
+            }
+            else{
+                if(lista[i] > segundoMaximo){
+                    segundoMaximo = lista[i];
+                }
+            }
+        }
+        return segundoMaximo;
     }
 
     /**
