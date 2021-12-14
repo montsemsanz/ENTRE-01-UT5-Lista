@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 /**
  * Un objeto de esta clase
  * guarda una lista de números enteros
@@ -11,9 +12,6 @@ import java.util.Random;
  * @author - Asier Galisteo
  */
 
-
-
-
 public class ListaNumeros {
     public static final int DIMENSION = 10;
     public static final int ANCHO_FORMATO = 6;
@@ -22,7 +20,6 @@ public class ListaNumeros {
     private static final Random generador = new Random();
     private int[] lista;
     private int pos;
-    
 
     /**
      * Constructor de la clase ListaNumeros
@@ -50,7 +47,6 @@ public class ListaNumeros {
             return true;
         }
         return false;
-        
 
     }
 
@@ -67,7 +63,7 @@ public class ListaNumeros {
      * Hacer sin if
      */
     public boolean estaVacia() {
-       return pos == 0;
+        return pos == 0;
     }
 
     /**
@@ -81,7 +77,7 @@ public class ListaNumeros {
      * Vacía la lista
      */
     public void vaciarLista() {
-       pos = 0;
+        pos = 0;
     }
 
     /**
@@ -91,14 +87,10 @@ public class ListaNumeros {
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-       //TODO
-       
-       
-       
-       return "";
-    }
+        //TODO
 
-     
+        return "";
+    }
 
     /**
      * Mostrar en pantalla la lista
@@ -123,9 +115,8 @@ public class ListaNumeros {
      * la lista
      */
     public void segundoMaximo() {       
-       //TODO
+        //TODO
 
-        
     }
 
     /**
@@ -147,11 +138,8 @@ public class ListaNumeros {
      */
     public void segundosMaximosAlPrincipio() {
         //TODO
-        
-        
 
     }
-
     /**
      * @param numero búsqueda binaria de  numero en lista
      * @return devuelve -1 si no se encuentra o la posición en la que aparece
@@ -162,11 +150,11 @@ public class ListaNumeros {
      *  
      * Usa exclusivamente métodos de la clase Arrays
      */
-    public void buscarBinario() {
-         //TODO
-         
-         
-
+    public int buscarBinario(int numero) {
+        int[] copia = Arrays.copyOf(lista,pos);
+        Arrays.sort(copia);
+        int posicion = Arrays.binarySearch(copia,numero);
+        return posicion;
     }
 
     /**
@@ -178,12 +166,9 @@ public class ListaNumeros {
      * 
      */
     public void crearBrillos() {
-       //TODO
-       
-       
+        //TODO
 
     }
-
     /**
      * @param  un array bidimensional brillos 
      * @return un nuevo array bidimensional de valores booleanos
@@ -197,10 +182,7 @@ public class ListaNumeros {
      * Nota -  No hay estrellas en los bordes del array brillos
      */
     public void detectarEstrellas() {
-       //TODO
-       
-       
-       
-    }
+        //TODO
 
+    }
 }
