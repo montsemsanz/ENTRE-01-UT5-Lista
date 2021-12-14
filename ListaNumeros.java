@@ -1,3 +1,4 @@
+import java.util.Random;
 /**
  * Un objeto de esta clase
  * guarda una lista de números enteros
@@ -7,11 +8,8 @@
  * y dos  métodos estáticos para trabajar con
  * arrays de dos dimensiones
  *
- * @author -
+ * @author - IKER CIA
  */
-
-
-import java.util.Random;
 
 public class ListaNumeros {
     public static final int DIMENSION = 10;
@@ -19,10 +17,8 @@ public class ListaNumeros {
     public static final char CAR_CABECERA = '-';
 
     private static final Random generador = new Random();
-    //TODO
-    
-    
-
+    private int lista[];
+    private int pos;
     /**
      * Constructor de la clase ListaNumeros
      * Crea e inicializa adecuadamente los
@@ -30,9 +26,9 @@ public class ListaNumeros {
      *
      * @param n el tamaño máximo de la lista
      */
-    public ListaNumeros() {
-        //TODO
-        
+    public ListaNumeros(int n) {
+        lista = new int[n];
+        pos = 0;
     }
 
     /**
@@ -42,19 +38,21 @@ public class ListaNumeros {
      * @param numero el valor que se añade.  
      * @return true si se ha podido añadir, false en otro caso
      */
-    public void addElemento() {
-        //TODO
-        
-        
-
+    public boolean addElemento(int numero) {
+        if(!estaCompleta()){
+        lista[pos] = numero;
+        pos++;
+        return true;
+        }
+        return false;
     }
 
     /**
      * @return true si la lista está completa, false en otro caso
      * Hacer sin if
      */
-    public void estaCompleta() {
-        //TODO
+    public boolean estaCompleta() {
+        return pos == lista.length;
 
     }
 
@@ -62,8 +60,8 @@ public class ListaNumeros {
      * @return true si la lista está vacía, false en otro caso.
      * Hacer sin if
      */
-    public void estaVacia() {
-       //TODO
+    public boolean estaVacia() {
+       return pos == 0;
 
     }
 
