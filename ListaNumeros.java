@@ -63,15 +63,15 @@ public class ListaNumeros {
      * Hacer sin if
      */
     public boolean estaVacia() {
-        return pos < lista.length;
+        return pos == 0;
 
     }
 
     /**
      * @return el nº de elementos realmente guardados en la lista
      */
-    public void getTotalNumeros() {
-        //TODO
+    public int getTotalNumeros() {
+        return pos;
 
     }
 
