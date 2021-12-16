@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 /**
  * Un objeto de esta clase
  * guarda una lista de números enteros
@@ -43,7 +44,12 @@ public class ListaNumeros {
      * @return true si se ha podido añadir, false en otro caso
      */
     public void addElemento(int n) {
-        lista[lista.length] = n;
+        if (!estaCompleta()) {
+            pos = lista.length;
+            lista[pos] = n;
+        }
+        
+        
     }
     
     /**
@@ -51,25 +57,38 @@ public class ListaNumeros {
      * Hacer sin if
      */
     public boolean estaCompleta() {
-
-        
+        return pos == lista.length;
     }
     
     /**
      * @return true si la lista está vacía, false en otro caso.
      * Hacer sin if
      */
-    public void estaVacia() {
-        //TODO
+    public boolean estaVacia() {
+        return pos == 0;
 
     }
 
     /**
      * @return el nº de elementos realmente guardados en la lista
      */
-    public void getTotalNumeros() {
-        //TODO
-
+    public int getTotalNumeros() {
+        int[] copia = new int[lista.length];
+        int j = 0;
+        for (int i = 0; i < lista.length; i++) {
+            if (lista[i] != 0) {
+                copia[j] = lista[i];
+                j++;
+            }
+        }
+        
+        int[] copia2 = Arrays.copyOf(copia, j);
+        
+        int total = 0;
+        for (int r = 0; r < copia2.length; r++) {
+            total++;
+        }
+        return total;
     }
 
     /**
