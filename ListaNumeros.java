@@ -12,8 +12,6 @@ import java.util.Arrays;
  * @author - Pablo Mosquera
  */
 
-
-
 public class ListaNumeros {
     public static final int DIMENSION = 10;
     public static final int ANCHO_FORMATO = 6;
@@ -43,13 +41,14 @@ public class ListaNumeros {
      * @param numero el valor que se añade.  
      * @return true si se ha podido añadir, false en otro caso
      */
-    public void addElemento(int n) {
+    public boolean addElemento(int n) {
         if (!estaCompleta()) {
-            pos = lista.length;
             lista[pos] = n;
+            pos ++;
+            return true;
         }
-        
-        
+        return false;
+
     }
     
     /**
@@ -59,7 +58,7 @@ public class ListaNumeros {
     public boolean estaCompleta() {
         return pos == lista.length;
     }
-    
+
     /**
      * @return true si la lista está vacía, false en otro caso.
      * Hacer sin if
@@ -81,9 +80,9 @@ public class ListaNumeros {
                 j++;
             }
         }
-        
+
         int[] copia2 = Arrays.copyOf(copia, j);
-        
+
         int total = 0;
         for (int r = 0; r < copia2.length; r++) {
             total++;
@@ -95,7 +94,7 @@ public class ListaNumeros {
      * Vacía la lista
      */
     public void vaciarLista() {
-        //TODO
+        pos = 0;
     }
 
     /**
@@ -107,10 +106,8 @@ public class ListaNumeros {
     public String toString() {
         //TODO
 
-       
         return "";
     }
-
 
     /**
      * Mostrar en pantalla la lista
@@ -138,6 +135,7 @@ public class ListaNumeros {
         //TODO
 
     }
+
     /**
      * El método coloca los valores que son segundos máximos al principio de
      * la lista respetando el orden de aparición del resto de elementos
@@ -158,7 +156,6 @@ public class ListaNumeros {
     public void segundosMaximosAlPrincipio() {
         //TODO
 
-
     }
 
     /**
@@ -174,7 +171,6 @@ public class ListaNumeros {
     public void buscarBinario() {
         //TODO
 
-
     }
 
     /**
@@ -187,7 +183,6 @@ public class ListaNumeros {
      */
     public void crearBrillos() {
         //TODO
-
 
     }
 
@@ -206,7 +201,5 @@ public class ListaNumeros {
     public void detectarEstrellas() {
         //TODO
 
-       
     }
-
 }
