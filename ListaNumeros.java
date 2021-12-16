@@ -1,3 +1,4 @@
+
 import java.util.Random;
 import java.util.Arrays;
 /**
@@ -88,8 +89,21 @@ public class ListaNumeros {
      */
     public String toString() {
         //TODO
-
-        return "";
+        int a = 0;
+        String str = "";
+        if(!estaVacia()){
+            for (int i = 1; i <= ANCHO_FORMATO; i++){
+                str += CAR_CABECERA;
+            }
+            str += "\n";
+            str = Utilidades.centrarNumero(lista[a], ANCHO_FORMATO);
+            str += "\n";
+            for (int i = 1; i <= ANCHO_FORMATO; i++){
+                str += CAR_CABECERA;
+            }
+            a++;
+        }
+        return str;
     }
 
     /**
@@ -151,10 +165,25 @@ public class ListaNumeros {
      * @return true si se han colocado los segundos máximos
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
-    public void segundosMaximosAlPrincipio() {
-        //TODO
-
+    public boolean segundosMaximosAlPrincipio() {
+        if(segundoMaximo() != Integer.MIN_VALUE){
+            for(int i = 0; i < pos; i++){
+                if(lista[i] == segundoMaximo()){
+                    int valor = lista[i];
+                    System.arraycopy(lista,i + 1, lista, i, pos - i - 1);
+                    pos--;
+                    System.arraycopy(lista,0,lista,1,pos);
+                    lista[0] = valor;
+                    pos++;
+                }
+            }
+        }
+        else{
+            return false;
+        }
+        return true;
     }
+
     /**
      * @param numero búsqueda binaria de  numero en lista
      * @return devuelve -1 si no se encuentra o la posición en la que aparece
@@ -184,6 +213,7 @@ public class ListaNumeros {
         //TODO
 
     }
+
     /**
      * @param  un array bidimensional brillos 
      * @return un nuevo array bidimensional de valores booleanos
