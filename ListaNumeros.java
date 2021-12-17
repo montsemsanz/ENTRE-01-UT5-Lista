@@ -65,24 +65,22 @@ public class ListaNumeros {
      * @return true si la lista está vacía, false en otro caso.
      * Hacer sin if
      */
-    public void estaVacia() {
-       //TODO
-
+    public boolean estaVacia() {
+       return pos == 0;
     }
 
     /**
      * @return el nº de elementos realmente guardados en la lista
      */
-    public void getTotalNumeros() {
-        //TODO
-
+    public int getTotalNumeros() {
+        return pos;
     }
 
     /**
      * Vacía la lista
      */
     public void vaciarLista() {
-       //TODO
+        pos = 0;
     }
 
     /**
@@ -98,8 +96,6 @@ public class ListaNumeros {
        
        return "";
     }
-
-     
 
     /**
      * Mostrar en pantalla la lista
