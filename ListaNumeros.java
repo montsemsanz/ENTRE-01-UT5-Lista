@@ -9,7 +9,6 @@
  *
  * Iñigo Camarero -
  */
-
 import java.util.Random;
 public class ListaNumeros {
     public static final int DIMENSION = 10;
@@ -28,7 +27,6 @@ public class ListaNumeros {
      * @param n el tamaño máximo de la lista
      */
     public ListaNumeros(int n) {
-        //TODO
         pos = 0;
         lista = new int [n];
 
@@ -47,9 +45,9 @@ public class ListaNumeros {
         }
         else {
             lista [pos] = numero;
-            return true;
-            int pos;++
+            pos++;
         }
+        return true;
     }
 
     /**
@@ -71,7 +69,7 @@ public class ListaNumeros {
     /**
      * @return el nº de elementos realmente guardados en la lista
      */
-    public void getTotalNumeros() {
+    public int getTotalNumeros() {
         return pos;
     }
 
@@ -89,9 +87,39 @@ public class ListaNumeros {
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-        //TODO
+        if (estaVacia()) {
+            return "";
+        }
+        else {
+            String cadena = "";
+            cadena += cabecera(6 * pos);
+            cadena += "\n";
+            for (int i = 0;i < lista.length;i++) {
 
-        return "";
+                cadena += Utilidades.centrarNumero(lista[i],ANCHO_FORMATO);
+
+            }
+            cadena += "\n";
+            cadena += cabecera(6 * pos);
+            return cadena;
+        }
+    }
+
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @param  y   a sample parameter for a method
+     * @return     the sum of x and y
+     */
+    private String cabecera(int y)
+    {
+        String cadena ="";
+        int contador = 0;
+        while (contador < y) {
+            cadena += CAR_CABECERA;
+            contador ++;
+        }
+        return cadena;
     }
 
     /**
@@ -116,9 +144,13 @@ public class ListaNumeros {
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
      * la lista
      */
-    public void segundoMaximo() {       
-        //TODO
-
+    public int segundoMaximo() { 
+        int maximo = Integer.MAX_VALUE;
+        int maximosegundo = Integer.MAX_VALUE;
+        for (int i = 0; i < lista.length;i++){
+            
+        }
+        return maximosegundo;
     }
 
     /**
