@@ -240,11 +240,14 @@ public class ListaNumeros {
      * Estos valores van a representar el brillo de una zona del espacio
      * 
      */
-    public int [][] crearBrillos() {
-        
-        
-       
-
+    public static int [][] crearBrillos() {
+        int [][] brillos = new int[DIMENSION][DIMENSION];
+        for (int fila = 0; fila <  brillos.length; fila++)    {
+            for (int col = 0; col <  brillos[fila].length; col++){
+                brillos[fila][col] = generador.nextInt(10) + 1;
+            }
+        }
+        return brillos;
     }
 
     /**
