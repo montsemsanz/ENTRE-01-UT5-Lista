@@ -136,10 +136,37 @@ public class ListaNumeros {
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
      * la lista
      */
-    public void segundoMaximo() {       
-       //TODO
-
-        
+    public int segundoMaximo() {
+        int max = 0;
+        int max2 = 0;
+        if(pos >= 2){
+            for(int i = 0; i < pos; i++){
+                int num = lista[i];
+                int num2 = 0;
+                if(max == 0){
+                    max = num;
+                }
+                else{
+                    if(num > max2 && num < max){
+                        max2 = num;
+                    }
+                    else if(num > max){
+                        max2 = max;
+                        max = num;
+                    }
+                }
+                if(max2 == 0){
+                    max2 = num;
+                }
+                if(max == num && max2 == num){
+                    max2 = Integer.MIN_VALUE;
+                }
+            }
+        }
+        else{
+            max2 = Integer.MIN_VALUE;
+        }
+        return max2;
     }
 
     /**
