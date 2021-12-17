@@ -40,42 +40,44 @@ public class ListaNumeros {
      * @param numero el valor que se añade.  
      * @return true si se ha podido añadir, false en otro caso
      */
-    public void addElemento() {
-        //TODO
+    public boolean addElemento(int numero) {
+        if(!estaCompleta()){
+            lista[pos] = numero;
+            pos++;
+            return true;
+        }
+        return false;
 
     }
-    
+
     /**
      * @return true si la lista está completa, false en otro caso
      * Hacer sin if
      */
-    public void estaCompleta() {
-        //TODO
-
+    public boolean estaCompleta() {
+        return pos == lista.length;
     }
 
     /**
      * @return true si la lista está vacía, false en otro caso.
      * Hacer sin if
      */
-    public void estaVacia() {
-        //TODO
-
+    public boolean  estaVacia() {
+        return pos == 0;
     }
 
     /**
      * @return el nº de elementos realmente guardados en la lista
      */
-    public void getTotalNumeros() {
-        //TODO
-
+    public int getTotalNumeros() {
+        return pos;
     }
 
     /**
      * Vacía la lista
      */
     public void vaciarLista() {
-        //TODO
+        pos = 0;
     }
 
     /**
@@ -85,9 +87,21 @@ public class ListaNumeros {
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-        //TODO
-
-        return "";
+        int i = 0;
+        String aux = "";
+        if(!estaVacia()){
+            for (int j = 1; j <= ANCHO_FORMATO; j++){
+                aux += CAR_CABECERA;
+            }
+            aux += "\n";
+            aux = Utilidades.centrarNumero(lista[i], ANCHO_FORMATO);
+            aux += "\n";
+            for (int k = 1; k <= ANCHO_FORMATO; k++){
+                aux += CAR_CABECERA;
+            }
+            i++;
+        }
+        return aux;
     }
 
     /**
@@ -138,6 +152,7 @@ public class ListaNumeros {
         //TODO
 
     }
+
     /**
      * @param numero búsqueda binaria de  numero en lista
      * @return devuelve -1 si no se encuentra o la posición en la que aparece
@@ -152,6 +167,7 @@ public class ListaNumeros {
         //TODO
 
     }
+
     /**
      * 
      * @return devuelve un array bidimensional de enteros de tamaño DIMENSION
@@ -164,6 +180,7 @@ public class ListaNumeros {
         //TODO
 
     }
+
     /**
      * @param  un array bidimensional brillos 
      * @return un nuevo array bidimensional de valores booleanos
