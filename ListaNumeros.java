@@ -10,6 +10,7 @@
  * Iñigo Camarero -
  */
 import java.util.Random;
+import java.util.Arrays;
 public class ListaNumeros {
     public static final int DIMENSION = 10;
     public static final int ANCHO_FORMATO = 6;
@@ -91,17 +92,17 @@ public class ListaNumeros {
             return "";
         }
         else {
-            String cadena = "";
-            cadena += cabecera(6 * pos);
-            cadena += "\n";
+            String salida = "";
+            salida += guion(6 * pos);
+            salida += "\n";
             for (int i = 0;i < lista.length;i++) {
 
-                cadena += Utilidades.centrarNumero(lista[i],ANCHO_FORMATO);
+                salida += Utilidades.centrarNumero(lista[i],ANCHO_FORMATO);
 
             }
-            cadena += "\n";
-            cadena += cabecera(6 * pos);
-            return cadena;
+            salida += "\n";
+            salida += guion(6 * pos);
+            return salida;
         }
     }
 
@@ -111,15 +112,15 @@ public class ListaNumeros {
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y
      */
-    private String cabecera(int y)
+    private String guion(int y)
     {
-        String cadena ="";
-        int contador = 0;
-        while (contador < y) {
-            cadena += CAR_CABECERA;
-            contador ++;
+        String resul ="";
+        int i = 0;
+        while (i < y) {
+            resul += CAR_CABECERA;
+            i ++;
         }
-        return cadena;
+        return resul;
     }
 
     /**
@@ -145,17 +146,30 @@ public class ListaNumeros {
      * la lista
      */
     public int segundoMaximo() { 
-        int maximo = Integer.MAX_VALUE;
-        int maximosegundo = Integer.MAX_VALUE;
-        for (int i = 0; i < lista.length;i++){
-            
+        int primero = lista[0]; 
+        int segundo = 0;
+        if (lista[1] > lista[0]){
+            primero = lista[1];
+            segundo = lista[0];
         }
-        return maximosegundo;
+        else{
+            segundo = lista[1];
+        }
+        for (int i = 2;i<= pos; i++){
+            if (lista[i] <= primero && lista[i] > segundo) {
+                lista[i] = segundo;
+            }
+            if(lista[i] > primero) {
+                segundo = primero;
+                primero = lista[i];
+            }
+        }
+        return segundo;
     }
 
     /**
      * El método coloca los valores que son segundos máximos al principio de
-     * la lista respetando el orden de aparición del resto de elementos
+     * la lista respetando el orden de aparición del resto de,m elementos
      * 
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
      * la lista
@@ -171,7 +185,6 @@ public class ListaNumeros {
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
     public void segundosMaximosAlPrincipio() {
-        //TODO
 
     }
 
@@ -185,10 +198,25 @@ public class ListaNumeros {
      *  
      * Usa exclusivamente métodos de la clase Arrays
      */
-    public void buscarBinario() {
-        //TODO
-
-    }
+    public int buscarBinario(int valor) {
+        int [] copia = Arrays.copyOf(lista,lista.length);
+        Arrays.sort (copia);
+        int izqu = 0;
+        int dcha = lista.length - 1;
+        while (izqu <= dcha) {
+            int mitad = (izqu + dcha) /2;
+            if (copia [mitad] == valor){
+                return mitad;
+            }
+            else if (copia[mitad] > valor){
+                dcha = mitad -1;
+            }
+            else {
+                izqu = mitad + 1;
+            }
+        }   
+        return -1;
+    } 
 
     /**
      * 
@@ -198,9 +226,14 @@ public class ListaNumeros {
      * Estos valores van a representar el brillo de una zona del espacio
      * 
      */
-    public void crearBrillos() {
-        //TODO
-
+    public int[][] crearBrillos() {
+        int matriz [][] = new int [DIMENSION][DIMENSION];
+        for (int fila = 0;fila < matriz.length;fila++){
+            for(int colum = 0;colum < matriz[fila].length;colum++){
+                matriz[fila][colum]= generador.nextInt(11);
+            }
+        }
+        return matriz;
     }
 
     /**
