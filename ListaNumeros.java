@@ -143,16 +143,32 @@ public class ListaNumeros {
      * la lista
      */
     public int segundoMaximo() {       
+        boolean igual = true;
         int maximo = Integer.MIN_VALUE;
         int maximo2 = Integer.MIN_VALUE;
         for(int i = 0; i <lista.length;i++) {
             if (lista[i] > maximo) {
                 maximo = lista [i];
             }
-            if (lista[i] >maximo2 && lista[i] < maximo) {
+
+            if (lista[i] > maximo2) {
                 maximo2 = lista[i];
             }
+
+            if(pos == 1) {
+                maximo2 =Integer.MIN_VALUE;
+
+            }
+
+            if(lista[i] == lista[i]) {
+                igual = true;
+            }
+            if(igual) {
+                maximo2 = Integer.MIN_VALUE;
+            }
+
         }
+
         return maximo2;
     }
 
