@@ -11,6 +11,7 @@
  */
 
 import java.util.Random;
+import java.util.Arrays;
 public class ListaNumeros {
     public static final int DIMENSION = 10;
     public static final int ANCHO_FORMATO = 6;
@@ -217,11 +218,18 @@ public class ListaNumeros {
      *  
      * Usa exclusivamente métodos de la clase Arrays
      */
-    public void buscarBinario() {
-         //TODO
-         
-         
-
+    public int buscarBinario(int numero) {
+        int[] copia = Arrays.copyOf(lista, lista.length);
+        Arrays.sort(copia, 0 , pos);
+        int posi = 0;
+        int bin = Arrays.binarySearch(lista, 0, pos, numero);
+        if(bin >= 0){
+            posi = bin;
+        }
+        else{
+            posi = -1;
+        }
+        return posi;
     }
 
     /**
@@ -232,9 +240,9 @@ public class ListaNumeros {
      * Estos valores van a representar el brillo de una zona del espacio
      * 
      */
-    public void crearBrillos() {
-       //TODO
-       
+    public int [][] crearBrillos() {
+        
+        
        
 
     }
