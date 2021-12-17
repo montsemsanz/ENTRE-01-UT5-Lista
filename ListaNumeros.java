@@ -186,11 +186,25 @@ public class ListaNumeros {
      * @return true si se han colocado los segundos máximos
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
-    public void segundosMaximosAlPrincipio() {
-        //TODO
-        
-        
-
+    public boolean segundosMaximosAlPrincipio() {
+        boolean colocados = false;
+        int max2 = segundoMaximo();
+        if(max2 == Integer.MIN_VALUE){
+            colocados = false;
+        }
+        else{
+            for(int i = 0; i < pos; i++){
+                if(lista[i] == max2){
+                    for (int x = 0; x <= i; x++)  {
+                        int aux = lista[x];
+                        lista[x] = max2;
+                        max2 = aux;
+                    }
+                }
+            }
+            colocados = true;
+        }
+        return colocados;
     }
 
     /**
