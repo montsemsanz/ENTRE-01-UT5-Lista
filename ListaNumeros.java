@@ -11,7 +11,6 @@
  */
 
 import java.util.Random;
-
 public class ListaNumeros {
     public static final int DIMENSION = 10;
     public static final int ANCHO_FORMATO = 6;
@@ -90,11 +89,29 @@ public class ListaNumeros {
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-       //TODO
-       
-       
-       
-       return "";
+        Utilidades x = new Utilidades();
+        String cadena = cabecera(pos) + "\n";
+        if(!estaVacia()){
+            for(int i = 0; i < pos; i++){
+                String centrado = x.centrarNumero(lista[i], ANCHO_FORMATO);
+                cadena += centrado;
+            }
+        }
+        cadena += "\n" + cabecera(pos);
+        return cadena;
+    }
+    /**
+     * Método privado para crear las líneas de cabecera
+     * 
+     */
+    public String cabecera(int n){
+        String cab = "";
+        for(int i = 0; i < n; i++){
+            for(int z = 0; z < ANCHO_FORMATO; z++){
+            cab += CAR_CABECERA;
+            }
+        }
+        return cab;
     }
 
     /**
