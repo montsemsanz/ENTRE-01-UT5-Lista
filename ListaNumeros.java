@@ -42,8 +42,8 @@ public class ListaNumeros {
      */
     public boolean addElemento(int n) {
         if(!estaCompleta()) {
-            pos++;
             lista[pos] = n;
+            pos++;
             return true;
         }   
         return false;
@@ -79,7 +79,7 @@ public class ListaNumeros {
      * Vacía la lista
      */
     public void vaciarLista() {
-        //TODO
+        pos = 0;
     }
 
     /**
@@ -89,9 +89,35 @@ public class ListaNumeros {
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-        //TODO
+        if(estaVacia()) {
+            return "";
+        }
+        else {
+            String cadena ="";
+            cadena+= cabecera(6 * pos);
+            cadena += "\n";
+            for(int i = 0; i < lista.length; i++) {
+                cadena += Utilidades.centrarNumero(lista[i], ANCHO_FORMATO);
+            }
+            cadena += "\n";
+            cadena += cabecera(6 * pos);
+            return cadena;
+        }
+    }
 
-        return "";
+    /**
+     * Metodo auxiliar para añadir una cabecera de longitud variable
+     *
+     */
+    private String cabecera(int y)
+    {
+        String cadena = "";
+        int contador = 0;
+        while(contador < y) {
+            cadena += CAR_CABECERA;
+            contador++;
+        }
+        return cadena;
     }
 
     /**
@@ -116,9 +142,18 @@ public class ListaNumeros {
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
      * la lista
      */
-    public void segundoMaximo() {       
-        //TODO
-
+    public int segundoMaximo() {       
+        int maximo = Integer.MIN_VALUE;
+        int maximo2 = Integer.MIN_VALUE;
+        for(int i = 0; i <lista.length;i++) {
+            if (lista[i] > maximo) {
+                maximo = lista [i];
+            }
+            if (lista[i] >maximo2 && lista[i] < maximo) {
+                maximo2 = lista[i];
+            }
+        }
+        return maximo2;
     }
 
     /**
