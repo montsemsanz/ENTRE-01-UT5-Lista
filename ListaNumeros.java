@@ -9,7 +9,7 @@
  *
  * @author -Aritz Ciriza
  */
-
+import java.util.Arrays;
 import java.util.Random;
 public class ListaNumeros {
     public static final int DIMENSION = 10;
@@ -146,12 +146,12 @@ public class ListaNumeros {
         boolean igual = true;
         int maximo = Integer.MIN_VALUE;
         int maximo2 = Integer.MIN_VALUE;
-        for(int i = 0; i <lista.length;i++) {
+        for(int i = 0; i < lista.length;i++) {
             if (lista[i] > maximo) {
                 maximo = lista [i];
             }
 
-            if (lista[i] > maximo2) {
+            if (lista[i] > maximo2 && lista[i] < maximo) {
                 maximo2 = lista[i];
             }
 
@@ -160,14 +160,17 @@ public class ListaNumeros {
 
             }
 
-            if(lista[i] == lista[i]) {
-                igual = true;
-            }
-            if(igual) {
-                maximo2 = Integer.MIN_VALUE;
-            }
+            // if(lista[i] == lista[i -1]) {
+            // igual = true;
+            // }
+            // else{
+            // igual = false;
+            // }
 
         }
+        // if(igual) {
+        // maximo2 = Integer.MIN_VALUE;
+        // }
 
         return maximo2;
     }
@@ -189,9 +192,17 @@ public class ListaNumeros {
      * @return true si se han colocado los segundos máximos
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
-    public void segundosMaximosAlPrincipio() {
-        //TODO
-
+    public int segundosMaximosAlPrincipio() {
+        // if(segundoMaximo() != 0) {
+        // for(int fila = 0; fila < lista.length; fila++) {
+        // lista[fila] = segundoMaximo();
+        // lista [fila +1] = 
+        // }
+        // return true;
+        // }
+        // else {
+        // return false;
+        // }
     }
 
     /**
@@ -204,8 +215,24 @@ public class ListaNumeros {
      *  
      * Usa exclusivamente métodos de la clase Arrays
      */
-    public void buscarBinario() {
-        //TODO
+    public int buscarBinario(int numero) {
+        int[] copia = Arrays.copyOf(lista, lista.length);
+        Arrays.sort (copia);
+        int izquierda = 0;
+        int derecha = lista.length -1;
+        while (izquierda <= derecha) {
+            int mitad = (izquierda + derecha) / 2;
+            if (copia [mitad] == numero) {
+                return mitad;
+            }
+            else if (copia[mitad] > numero) {
+                derecha = mitad -1;
+            }
+            else {
+                izquierda = mitad + 1;
+            }
+        }
+        return -1;
 
     }
 
@@ -217,9 +244,14 @@ public class ListaNumeros {
      * Estos valores van a representar el brillo de una zona del espacio
      * 
      */
-    public void crearBrillos() {
-        //TODO
-
+    public int[][] crearBrillos() {
+        int [][] brillo = new int[DIMENSION][DIMENSION];
+        for(int fila = 0; fila < brillo.length; fila++){
+            for(int columna = 0; columna < brillo[fila].length; columna++) {
+                brillo[fila][columna]= generador.nextInt(11);
+            }
+        }
+        return brillo;
     }
 
     /**
