@@ -145,26 +145,8 @@ public class ListaNumeros {
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
      * la lista
      */
-    public int segundoMaximo() { 
-        int primero = lista[0]; 
-        int segundo = 0;
-        if (lista[1] > lista[0]){
-            primero = lista[1];
-            segundo = lista[0];
-        }
-        else{
-            segundo = lista[1];
-        }
-        for (int i = 2;i<= pos; i++){
-            if (lista[i] <= primero && lista[i] > segundo) {
-                lista[i] = segundo;
-            }
-            if(lista[i] > primero) {
-                segundo = primero;
-                primero = lista[i];
-            }
-        }
-        return segundo;
+    public void segundoMaximo() {      
+        
     }
 
     /**
@@ -199,16 +181,16 @@ public class ListaNumeros {
      * Usa exclusivamente métodos de la clase Arrays
      */
     public int buscarBinario(int valor) {
-        int [] copia = Arrays.copyOf(lista,lista.length);
-        Arrays.sort (copia);
+        int [] arraycopia = Arrays.copyOf(lista,lista.length);
+        Arrays.sort (arraycopia);
         int izqu = 0;
         int dcha = lista.length - 1;
         while (izqu <= dcha) {
             int mitad = (izqu + dcha) /2;
-            if (copia [mitad] == valor){
+            if (arraycopia [mitad] == valor){
                 return mitad;
             }
-            else if (copia[mitad] > valor){
+            else if (arraycopia[mitad] > valor){
                 dcha = mitad -1;
             }
             else {
@@ -248,8 +230,18 @@ public class ListaNumeros {
      * 
      * Nota -  No hay estrellas en los bordes del array brillos
      */
-    public void detectarEstrellas() {
-        //TODO
-
+    public boolean[][] detectarEstrellas(int [][] matriz) {
+        boolean [][] resultado = new boolean[DIMENSION][DIMENSION];
+        matriz = crearBrillos();
+        for(int fila = 0; fila < matriz.length;fila++) {
+            for(int colum = 0;colum < matriz[fila].length;colum++) {
+                int conjunto = matriz[fila][colum] + matriz[fila][colum] + matriz[fila][colum]+ matriz[fila][colum];
+                if(30 < conjunto) {
+                    resultado[fila][colum] = true;
+                }
+            }
+        }
+        return resultado;
     }
 }
+
