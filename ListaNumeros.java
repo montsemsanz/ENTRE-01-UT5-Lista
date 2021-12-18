@@ -88,22 +88,30 @@ public class ListaNumeros {
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-        //TODO
         int a = 0;
         String str = "";
         if(!estaVacia()){
-            for (int i = 1; i <= ANCHO_FORMATO; i++){
-                str += CAR_CABECERA;
+            str += escribirLinea();
+            str += "\n";
+            for (int c = 0; c < pos; c++){
+                str += Utilidades.centrarNumero(lista[c], ANCHO_FORMATO); 
             }
             str += "\n";
-            str = Utilidades.centrarNumero(lista[a], ANCHO_FORMATO);
-            str += "\n";
-            for (int i = 1; i <= ANCHO_FORMATO; i++){
-                str += CAR_CABECERA;
-            }
-            a++;
+            str += escribirLinea();
         }
         return str;
+    }
+    
+    /**
+     * Escribe la línea de puntos
+     */
+    private String escribirLinea()
+    {
+        String linea = "";
+        for (int i = 1; i <= ANCHO_FORMATO * pos; i++){
+                linea += CAR_CABECERA;
+            }
+        return linea;
     }
 
     /**
@@ -212,9 +220,9 @@ public class ListaNumeros {
     public static  int [][] crearBrillos() {
         int [][] brillos = new int [DIMENSION][DIMENSION];
         for (int fila = 0 ; fila < brillos.length; fila++){
-           for(int columna = 0; columna < brillos[fila].length; columna++){
-               brillos[fila][columna] = generador.nextInt(11);
-           }
+            for(int columna = 0; columna < brillos[fila].length; columna++){
+                brillos[fila][columna] = generador.nextInt(11);
+            }
         }
         return brillos;
     }
@@ -234,11 +242,11 @@ public class ListaNumeros {
     public static boolean[][] detectarEstrellas(int[][] brillos) {
         boolean [][]estrellas = new boolean [brillos.length][brillos[0].length];
         for (int fila = 1 ; fila < estrellas.length - 1; fila++){
-           for(int columna = 1; columna < estrellas[fila].length - 1; columna++){
-               if(brillos[fila - 1][columna] + brillos[fila][columna - 1] + brillos[fila + 1][columna] + brillos[fila][columna + 1] > 30){
-                   estrellas[fila][columna] = true;
-               } 
-           }
+            for(int columna = 1; columna < estrellas[fila].length - 1; columna++){
+                if(brillos[fila - 1][columna] + brillos[fila][columna - 1] + brillos[fila + 1][columna] + brillos[fila][columna + 1] > 30){
+                    estrellas[fila][columna] = true;
+                } 
+            }
         }
         return estrellas;
     }
