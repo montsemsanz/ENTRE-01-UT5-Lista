@@ -145,6 +145,11 @@ public class ListaNumeros {
     public int segundoMaximo() {      
         int maximo = Integer.MIN_VALUE;
         int maximo2 = Integer.MIN_VALUE;
+        boolean verificador = false;
+        if (pos == 1) {
+            maximo2 = Integer.MIN_VALUE;
+            return maximo2;
+        }
         for(int i = 0; i < lista.length;i++) {
             if (lista[i] > maximo) {
                 maximo = lista [i];
@@ -158,6 +163,18 @@ public class ListaNumeros {
 
             }
 
+        }
+        for(int i = 1; i < lista.length;i++) {
+            if(lista[i] == lista[i - 1]) {
+                verificador = true;
+            }
+            else {
+                verificador = false;
+                return maximo2;
+            }
+        }
+        if( verificador) {
+            maximo2 = Integer.MIN_VALUE;
         }
         return maximo2;
     }
@@ -180,16 +197,16 @@ public class ListaNumeros {
     // *          false si no se han colocado los segundos máximos porque no había ninguno
     // */
     // public int segundosMaximosAlPrincipio() {
-    // // if(segundoMaximo() != 0) {
-    // // for(int fila = 0; fila < lista.length; fila++) {
-    // // lista[fila] = segundoMaximo();
-    // // lista [fila +1] = 
-    // // }
-    // // return true;
-    // // }
-    // // else {
-    // // return false;
-    // // }
+    // if(segundoMaximo() != 0) {
+    // for(int fila = 0; fila < lista.length; fila++) {
+    // lista[fila] = segundoMaximo();
+    // lista [fila +1] = 
+    // }
+    // return true;
+    // }
+    // else {
+    // return false;
+    // }
     // }
 
     /**
