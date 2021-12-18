@@ -88,7 +88,6 @@ public class ListaNumeros {
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-        int a = 0;
         String str = "";
         if(!estaVacia()){
             str += escribirLinea();
