@@ -145,8 +145,42 @@ public class ListaNumeros {
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
      * la lista
      */
-    public void segundoMaximo() {      
+    public int segundoMaximo() {      
+        int maximo = Integer.MIN_VALUE;
+        int maximo2 = Integer.MIN_VALUE;
+        boolean verificador = false;
+        if (pos == 1) {
+            maximo2 = Integer.MIN_VALUE;
+            return maximo2;
+        }
         
+        for(int i = 0; i < lista.length;i++) {
+            if (lista[i] > maximo) {
+                maximo = lista [i];
+
+            }
+
+        }
+        for(int i = 0; i < lista.length;i++) {
+            if (lista[i] > maximo2 && lista[i] < maximo) {
+                maximo2 = lista [i];
+
+            }
+
+        }
+        for(int i = 1; i < lista.length;i++) {
+            if(lista[i] == lista[i - 1]) {
+                verificador = true;
+            }
+            else {
+                verificador = false;
+                return maximo2;
+            }
+        }
+        if( verificador) {
+            maximo2 = Integer.MIN_VALUE;
+        }
+        return maximo2;
     }
 
     /**
