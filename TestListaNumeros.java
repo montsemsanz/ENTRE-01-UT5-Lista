@@ -34,13 +34,13 @@ public class TestListaNumeros
         lista.vaciarLista();
         testAdd(lista);
 
-        //testSegundosPrincipio(lista);
-        separador();
+        // testSegundosPrincipio(lista);
+        // separador();
 
         int numero = 2;
-        //testBuscarBinario(lista, numero);       
+        testBuscarBinario(lista, numero);       
         numero = 21;
-        //testBuscarBinario(lista, numero); 
+        testBuscarBinario(lista, numero); 
 
         separador();
 
@@ -69,22 +69,22 @@ public class TestListaNumeros
         }
     }
 
-    //public static void testSegundosPrincipio(ListaNumeros lista) {
+    // public static void testSegundosPrincipio(ListaNumeros lista) {
     // System.out.println("Después de colocar los segundos máximos al principio");
     // boolean exito = lista.segundosMaximosAlPrincipio();
     // if (!exito) {
-    //  System.out.println("No había segundo máximo\n");
+     // System.out.println("No había segundo máximo\n");
     // }
     // else {
-    //     System.out.println(lista.toString());
+        // System.out.println(lista.toString());
     // }
-    //}
+    // }
 
-    //public static void testBuscarBinario(ListaNumeros lista, int numero) {
-    // System.out.println("Haciendo una búsqueda binaria");
-    // System.out.println(lista.toString());
-    // System.out.println("El valor " + numero + " existe en lista? " + (lista.buscarBinario(numero) != -1));
-    //}
+    public static void testBuscarBinario(ListaNumeros lista, int numero) {
+        System.out.println("Haciendo una búsqueda binaria");
+        System.out.println(lista.toString());
+        System.out.println("El valor " + numero + " existe en lista? " + (lista.buscarBinario(numero) != -1));
+    }
 
     //public static void testDetectarEstrellas() {
     // System.out.println("Detectando estrellas en el espacio");

@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 
 /**
  * Un objeto de esta clase
@@ -76,9 +77,7 @@ public class ListaNumeros {
      * Vacía la lista
      */
     public void vaciarLista() {
-        //for (int i = 0; i < lista.length; i++) {
-        //    lista[i] = 0;
-        //}
+        pos = 0;
     }
 
     /**
@@ -153,11 +152,11 @@ public class ListaNumeros {
                 min = lista[i];
             }
         }
-        
+
         if (max == min) {
             min = Integer.MIN_VALUE;
         }
-        
+
         max = min;
         return max;
     }
@@ -179,10 +178,20 @@ public class ListaNumeros {
      * @return true si se han colocado los segundos máximos
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
-    public void segundosMaximosAlPrincipio() {
-        //TODO
-
-    }
+    // public boolean segundosMaximosAlPrincipio() {
+        // int j = 0;
+        // boolean distinta = true;
+        // for (int i = 0; i < pos; i++) {
+            // if (lista[i] == segundoMaximo()) {
+                
+                // distinta = true;    
+            // }
+            // else {
+                // distinta = false;
+            // }
+        // }
+        // return distinta;
+    // }
 
     /**
      * @param numero búsqueda binaria de  numero en lista
@@ -194,9 +203,17 @@ public class ListaNumeros {
      *  
      * Usa exclusivamente métodos de la clase Arrays
      */
-    public void buscarBinario() {
-        //TODO
+    public int buscarBinario(int numero) {
+        int[] listaCopia = Arrays.copyOf(lista, pos);
+        Arrays.sort(listaCopia);
+        int pos = Arrays.binarySearch(listaCopia, numero);
 
+        if (pos < 0) {
+            return -1;
+        }
+        else {
+            return pos -1;  
+        }
     }
 
     /**
@@ -207,9 +224,14 @@ public class ListaNumeros {
      * Estos valores van a representar el brillo de una zona del espacio
      * 
      */
-    public void crearBrillos() {
-        //TODO
-
+    public int[][] crearBrillos() {
+        int[][] brillos = new int[DIMENSION][DIMENSION];
+        for (int fila = 0; fila < brillos.length; fila++) {
+            for (int col = 0; col < brillos[fila].length; col++) {
+                brillos[fila][col] = generador.nextInt(11);
+            }
+        }
+        return brillos;
     }
 
     /**
