@@ -94,13 +94,13 @@ public class ListaNumeros {
         }
         else {
             String cadena ="";
-            cadena+= cabecera(6 * pos);
+            cadena+= cabecera(6 * lista.length);
             cadena += "\n";
             for(int i = 0; i < lista.length; i++) {
                 cadena += Utilidades.centrarNumero(lista[i], ANCHO_FORMATO);
             }
             cadena += "\n";
-            cadena += cabecera(6 * pos);
+            cadena+= cabecera(6 * lista.length);
             return cadena;
         }
     }
@@ -179,35 +179,35 @@ public class ListaNumeros {
         return maximo2;
     }
 
-    // /**
-    // * El método coloca los valores que son segundos máximos al principio de
-    // * la lista respetando el orden de aparición del resto de elementos
-    // * 
-    // * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
-    // * la lista
-    // * 
-    // * Si lista = {21, -5, 28, -7, 28, 77, 77, -17, 21, 15, 28, 28, 77} 
-    // * lista queda  {28, 28, 28, 28, 21, -5, -7, 77, 77, -17, 21, 15, 77} y se devuelve true
-    // * 
-    // * Si lista = {77, 21} lista queda {21, 77} y se devuelve true
-    // * Si lista = {21} lista queda igual y se devuelve false
-    // * Si lista = {21, 21, 21, 21} lista queda igual y se devuelve false
-    // * 
-    // * @return true si se han colocado los segundos máximos
-    // *          false si no se han colocado los segundos máximos porque no había ninguno
-    // */
-    // public int segundosMaximosAlPrincipio() {
-    // if(segundoMaximo() != 0) {
-    // for(int fila = 0; fila < lista.length; fila++) {
-    // lista[fila] = segundoMaximo();
-    // lista [fila +1] = 
-    // }
-    // return true;
-    // }
-    // else {
-    // return false;
-    // }
-    // }
+    /**
+     * El método coloca los valores que son segundos máximos al principio de
+     * la lista respetando el orden de aparición del resto de elementos
+     * 
+     * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
+     * la lista
+     * 
+     * Si lista = {21, -5, 28, -7, 28, 77, 77, -17, 21, 15, 28, 28, 77} 
+     * lista queda  {28, 28, 28, 28, 21, -5, -7, 77, 77, -17, 21, 15, 77} y se devuelve true
+     * 
+     * Si lista = {77, 21} lista queda {21, 77} y se devuelve true
+     * Si lista = {21} lista queda igual y se devuelve false
+     * Si lista = {21, 21, 21, 21} lista queda igual y se devuelve false
+     * 
+     * @return true si se han colocado los segundos máximos
+     *          false si no se han colocado los segundos máximos porque no había ninguno
+     */
+    public boolean segundosMaximosAlPrincipio() {
+        if(segundoMaximo() != Integer.MIN_VALUE) {
+            for(int fila = 0; fila < pos; fila++) {
+                lista[fila] = segundoMaximo();
+                lista [fila +1] = lista[fila];
+            }
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     /**
      * @param numero búsqueda binaria de  numero en lista
@@ -248,7 +248,7 @@ public class ListaNumeros {
      * Estos valores van a representar el brillo de una zona del espacio
      * 
      */
-    public int[][] crearBrillos() {
+    public static int[][] crearBrillos() {
         int [][] brillo = new int[DIMENSION][DIMENSION];
         for(int fila = 0; fila < brillo.length; fila++){
             for(int columna = 0; columna < brillo[fila].length; columna++) {
@@ -270,11 +270,11 @@ public class ListaNumeros {
      * 
      * Nota -  No hay estrellas en los bordes del array brillos
      */
-    public boolean[][] detectarEstrellas(int [][] brillos) {
+    public static boolean[][] detectarEstrellas(int [][] brillos) {
         boolean [][] booleano = new boolean[DIMENSION][DIMENSION];
         brillos = crearBrillos();
-        for(int fila = 0; fila < brillos.length; fila++){
-            for(int columna = 0; columna < brillos[fila].length; columna++) {
+        for(int fila = 1; fila < brillos.length -1; fila++){
+            for(int columna = 1; columna < brillos[fila].length -1; columna++) {
                 int suma = brillos[fila][columna] + brillos[fila][columna] + brillos[fila][columna] + brillos[fila][columna];
                 if(suma > 30) {
                     booleano[fila][columna] = true;
