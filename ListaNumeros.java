@@ -231,8 +231,15 @@ public class ListaNumeros {
      * 
      * Nota -  No hay estrellas en los bordes del array brillos
      */
-    public void detectarEstrellas() {
-        //TODO
-
+    public static boolean[][] detectarEstrellas(int[][] brillos) {
+        boolean [][]estrellas = new boolean [brillos.length][brillos[0].length];
+        for (int fila = 1 ; fila < estrellas.length - 1; fila++){
+           for(int columna = 1; columna < estrellas[fila].length - 1; columna++){
+               if(brillos[fila - 1][columna] + brillos[fila][columna - 1] + brillos[fila + 1][columna] + brillos[fila][columna + 1] > 30){
+                   estrellas[fila][columna] = true;
+               } 
+           }
+        }
+        return estrellas;
     }
 }
