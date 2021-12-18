@@ -149,79 +149,94 @@ public class ListaNumeros {
                 }
                 primero = lista[i];
             }
-            else    {
-                if (segundo < lista[i] && primero > segundo){
-                    segundo = lista[i];
-                }
+            else if (segundo < lista[i] && primero > segundo){
+                segundo = lista[i];
             }
         }
         return segundo;
     }
 
-    // /**
-    // * El método coloca los valores que son segundos máximos al principio de
-    // * la lista respetando el orden de aparición del resto de elementos
-    // * 
-    // * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
-    // * la lista
-    // * 
-    // * Si lista = {21, -5, 28, -7, 28, 77, 77, -17, 21, 15, 28, 28, 77} 
-    // * lista queda  {28, 28, 28, 28, 21, -5, -7, 77, 77, -17, 21, 15, 77} y se devuelve true
-    // * 
-    // * Si lista = {77, 21} lista queda {21, 77} y se devuelve true
-    // * Si lista = {21} lista queda igual y se devuelve false
-    // * Si lista = {21, 21, 21, 21} lista queda igual y se devuelve false
-    // * 
-    // * @return true si se han colocado los segundos máximos
-    // *          false si no se han colocado los segundos máximos porque no había ninguno
-    // */
-    // public boolean segundosMaximosAlPrincipio() {
-    // TODO
+    /**
+     * El método coloca los valores que son segundos máximos al principio de
+     * la lista respetando el orden de aparición del resto de elementos
+     * 
+     * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
+     * la lista
+     * 
+     * Si lista = {21, -5, 28, -7, 28, 77, 77, -17, 21, 15, 28, 28, 77} 
+     * lista queda  {28, 28, 28, 28, 21, -5, -7, 77, 77, -17, 21, 15, 77} y se devuelve true
+     * 
+     * Si lista = {77, 21} lista queda {21, 77} y se devuelve true
+     * Si lista = {21} lista queda igual y se devuelve false
+     * Si lista = {21, 21, 21, 21} lista queda igual y se devuelve false
+     * 
+     * @return true si se han colocado los segundos máximos
+     *          false si no se han colocado los segundos máximos porque no había ninguno
+     */
+    public boolean segundosMaximosAlPrincipio() {
+        boolean segundo = false;
+        int num = segundoMaximo();
+        int posicion = 0;
+        for(int i = 0; i < pos; i++){            
+            if(num == lista[i]) {
+                int numSave = lista[posicion];
+                lista[posicion] = num;
+                for(int j = i - 1; j >= posicion + 1; j--)   {
+                    lista[j + 1] = lista[j];
+                }
+                lista[posicion + 1] = numSave;
+                posicion++;
+            }
+            
+        }
+        
+        return segundo;
+    }
 
-    // }
+    /**
+     * @param numero búsqueda binaria de  numero en lista
+     * @return devuelve -1 si no se encuentra o la posición en la que aparece
+     *  
+     * El array original lista no se modifica
+     * Para ello crea  previamente una copia
+     * de lista y trabaja  con la copia
+     *  
+     * Usa exclusivamente métodos de la clase Arrays
+     */
+    public int buscarBinario(int numero) {
+        return 0;
 
-    // /**
-    // * @param numero búsqueda binaria de  numero en lista
-    // * @return devuelve -1 si no se encuentra o la posición en la que aparece
-    // *  
-    // * El array original lista no se modifica
-    // * Para ello crea  previamente una copia
-    // * de lista y trabaja  con la copia
-    // *  
-    // * Usa exclusivamente métodos de la clase Arrays
-    // */
-    // public int buscarBinario(int numero) {
-    // TODO
+    }
 
-    // }
+    /**
+     * 
+     * @return devuelve un array bidimensional de enteros de tamaño DIMENSION
+     * inicializado con valores aleatorios entre 0 y 10 inclusive
+     * 
+     * Estos valores van a representar el brillo de una zona del espacio
+     * 
+     */
+    public static int[][] crearBrillos() {
+        int[][] a = new int[0][0];
+        return a;
 
-    // /**
-    // * 
-    // * @return devuelve un array bidimensional de enteros de tamaño DIMENSION
-    // * inicializado con valores aleatorios entre 0 y 10 inclusive
-    // * 
-    // * Estos valores van a representar el brillo de una zona del espacio
-    // * 
-    // */
-    // public static int[][] crearBrillos() {
-    // TODO
+    }
 
-    // }
+    /**
+     * @param  un array bidimensional brillos 
+     * @return un nuevo array bidimensional de valores booleanos
+     *          de las mismas dimensiones que el array brillos con
+     *          valores true en las posiciones donde hay estrellas
+     * 
+     * Una posición f,c del array brillos es una estrella 
+     * si la suma del valor de los brillos de sus cuatro vecinos 
+     * (arriba, abajo, derecha e izquierda) es mayor que 30
+     * 
+     * Nota -  No hay estrellas en los bordes del array brillos
+     */
+    public static boolean[][] detectarEstrellas(int[][] brillos) {
+        boolean[][] a = new boolean[1][1];
+        return a;
 
-    // /**
-    // * @param  un array bidimensional brillos 
-    // * @return un nuevo array bidimensional de valores booleanos
-    // *          de las mismas dimensiones que el array brillos con
-    // *          valores true en las posiciones donde hay estrellas
-    // * 
-    // * Una posición f,c del array brillos es una estrella 
-    // * si la suma del valor de los brillos de sus cuatro vecinos 
-    // * (arriba, abajo, derecha e izquierda) es mayor que 30
-    // * 
-    // * Nota -  No hay estrellas en los bordes del array brillos
-    // */
-    // public static boolean[][] detectarEstrellas(int[][] brillos) {
-    // TODO
-
-    // }
+    }
 }
