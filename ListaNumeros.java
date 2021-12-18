@@ -262,11 +262,22 @@ public class ListaNumeros {
      * 
      * Nota -  No hay estrellas en los bordes del array brillos
      */
-    public void detectarEstrellas() {
-       //TODO
-       
-       
-       
+    public static boolean [][] detectarEstrellas(int [][] brillos) {
+        boolean [][] detector = new boolean[DIMENSION][DIMENSION];
+        for (int fila = 1; fila <  brillos.length - 1; fila++){
+            for (int col = 1; col <  brillos[fila].length - 1; col++){
+                int arriba = brillos[fila - 1][col];
+                int abajo = brillos[fila + 1][col];
+                int derecha = brillos[fila][col + 1];
+                int izquierda = brillos[fila][col - 1];
+                if(arriba + abajo + derecha + izquierda > 30){
+                    detector [fila][col] = true;
+                }
+                else{
+                    detector [fila][col] = false;
+                }
+            }
+        }
+        return detector;
     }
-
 }
