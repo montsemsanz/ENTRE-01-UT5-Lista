@@ -153,13 +153,16 @@ public class ListaNumeros {
             maximo2 = Integer.MIN_VALUE;
             return maximo2;
         }
-        
+
         for(int i = 0; i < lista.length;i++) {
             if (lista[i] > maximo) {
                 maximo = lista [i];
 
             }
 
+        }
+        if( verificador) {
+            maximo2 = Integer.MIN_VALUE;
         }
         for(int i = 0; i < lista.length;i++) {
             if (lista[i] > maximo2 && lista[i] < maximo) {
@@ -177,9 +180,7 @@ public class ListaNumeros {
                 return maximo2;
             }
         }
-        if( verificador) {
-            maximo2 = Integer.MIN_VALUE;
-        }
+
         return maximo2;
     }
 
@@ -198,10 +199,29 @@ public class ListaNumeros {
      * Si lista = {21, 21, 21, 21} lista queda igual y se devuelve false
      * 
      * @return true si se han colocado los segundos máximos
-     *          false si no se han colocado los segundos máximos porque no había ninguno
+     *   
+     *  
+     *  false si no se han colocado los segundos máximos porque no había ninguno
      */
-    public void segundosMaximosAlPrincipio() {
+    public boolean segundosMaximosAlPrincipio() {
+        if (lista.length == 1){
+            return false;
+        }
+        if (sontodosiguales()){
+            return false;
+        }
+        return true;
+    }
 
+    /**
+     * TODOS IGUALES
+     */
+    public boolean sontodosiguales()
+    {
+        for (int i= 0;i < lista.length;i++) {
+            lista[i] = lista [i + 1];
+        }
+        return true;
     }
 
     /**

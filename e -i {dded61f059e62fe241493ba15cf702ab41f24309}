@@ -1,0 +1,41 @@
+[33mcommit f1a598eb4204d1ae5a834f321f8c77df1c577282[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: inigo1dam <inigocamareroadam1@gmail.com>
+Date:   Sat Dec 18 21:52:09 2021 +0100
+
+    cambios metodos static +tostring
+
+[33mcommit 99b8ee165eec593eac7eedd0876eaaf53f467a25[m
+Author: inigo1dam <inigocamareroadam1@gmail.com>
+Date:   Sat Dec 18 20:10:54 2021 +0100
+
+    detectar estrellas
+
+[33mcommit dded61f059e62fe241493ba15cf702ab41f24309[m
+Author: inigo1dam <inigocamareroadam1@gmail.com>
+Date:   Sat Dec 18 19:58:41 2021 +0100
+
+    detectar estrellas
+
+[33mcommit ddf352c9f6d315188bfbfbc9922b3d2d2ad8fcc2[m
+Author: inigo1dam <inigocamareroadam1@gmail.com>
+Date:   Fri Dec 17 23:54:42 2021 +0100
+
+    brillo + binariio
+
+[33mcommit b0a4f065e65d1d6f5737ab5246c134b3acb3632f[m
+Author: inigo1dam <inigocamareroadam1@gmail.com>
+Date:   Fri Dec 17 18:15:43 2021 +0100
+
+    to string
+
+[33mcommit b53b7badbeb06fe966b8034863e5cd2c17af2714[m
+Author: inigo1dam <inigocamareroadam1@gmail.com>
+Date:   Tue Dec 14 18:15:16 2021 +0100
+
+    cambios variables
+
+[33mcommit f7f24d86061be5a3cc49ff37dd7f82de15abeea9[m
+Author: Montse Viyuela <montsemsanz@gmail.com>
+Date:   Tue Dec 7 16:57:13 2021 +0100
+
+    Proyecto de partida inicial para Entrega1-UT5-Lista
