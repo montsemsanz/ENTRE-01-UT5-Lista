@@ -207,20 +207,7 @@ public class ListaNumeros {
         if (lista.length == 1){
             return false;
         }
-        if (sontodosiguales()){
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * TODOS IGUALES
-     */
-    public boolean sontodosiguales()
-    {
-        for (int i= 0;i < lista.length;i++) {
-            lista[i] = lista [i + 1];
-        }
+        
         return true;
     }
 
