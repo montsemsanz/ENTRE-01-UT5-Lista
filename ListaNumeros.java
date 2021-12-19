@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 /**
  * Un objeto de esta clase
  * guarda una lista de números enteros
@@ -187,9 +188,10 @@ public class ListaNumeros {
                 lista[posicion + 1] = numSave;
                 posicion++;
             }
-            
         }
-        
+        if (lista[posicion - 1] == num)   {
+            segundo = true;
+        }
         return segundo;
     }
 
@@ -204,8 +206,13 @@ public class ListaNumeros {
      * Usa exclusivamente métodos de la clase Arrays
      */
     public int buscarBinario(int numero) {
-        return 0;
-
+        int[] copia = Arrays.copyOf(lista, lista.length - 1);
+        Arrays.sort(copia);
+        int posicionNum = Arrays.binarySearch(copia, numero);
+        if (posicionNum >= 0)    {
+            return posicionNum;
+        }
+        return -1;
     }
 
     /**
