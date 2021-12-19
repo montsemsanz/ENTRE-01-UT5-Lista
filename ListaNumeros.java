@@ -95,10 +95,10 @@ public class ListaNumeros {
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-        //TODO
+        String str = "";
 
        
-        return "";
+        return str;
     }
 
 
@@ -124,9 +124,25 @@ public class ListaNumeros {
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
      * la lista
      */
-    public void segundoMaximo() {       
-        //TODO
-
+    public int segundoMaximo() {       
+        int maximo = Integer.MIN_VALUE;
+        int maximo2 = Integer.MIN_VALUE;
+        for(int i = 0; i <= pos; i++){
+            if(lista[i] <= maximo){
+                maximo2 = maximo;
+                maximo = lista[i];
+            
+            }
+            else if(lista[i] <= maximo2){
+            
+                maximo2 = lista[i];
+            
+            }
+            
+        
+        }
+        
+        return maximo2;
     }
     /**
      * El método coloca los valores que son segundos máximos al principio de
