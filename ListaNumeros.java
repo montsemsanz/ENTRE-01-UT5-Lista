@@ -45,19 +45,29 @@ public class ListaNumeros {
      * @param numero el valor que se añade.  
      * @return true si se ha podido añadir, false en otro caso
      */
-    public void addElemento() {
-        //TODO
+    public boolean addElemento(int numero) {        
+        if(!estaCompleta()){
         
+            lista[pos] = numero;
+            pos++;
         
-
+            return true;        
+        }
+        
+        return false;
     }
 
     /**
      * @return true si la lista está completa, false en otro caso
      * Hacer sin if
      */
-    public void estaCompleta() {
-        //TODO
+    public boolean estaCompleta() {
+        if(pos == lista.length){
+        
+            return true;
+        
+        }
+        return false;
 
     }
 
