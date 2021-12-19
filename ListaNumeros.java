@@ -224,9 +224,15 @@ public class ListaNumeros {
      * 
      */
     public static int[][] crearBrillos() {
-        int[][] a = new int[0][0];
-        return a;
-
+        int[][] brillos = new int[DIMENSION][DIMENSION];
+        int aleatorio = generador.nextInt(10) + 1;
+        for(int i = 0; i < brillos.length; i ++)   {
+            for(int j = 0; j < brillos[i].length; j++)    {
+                brillos[i][j] = aleatorio; 
+                aleatorio = generador.nextInt(10) + 1;
+            }
+        }   
+        return brillos;
     }
 
     /**
@@ -242,8 +248,15 @@ public class ListaNumeros {
      * Nota -  No hay estrellas en los bordes del array brillos
      */
     public static boolean[][] detectarEstrellas(int[][] brillos) {
-        boolean[][] a = new boolean[1][1];
-        return a;
-
+        boolean[][] detectorEst = new boolean[DIMENSION][DIMENSION];
+        for(int i = 1; i < brillos.length - 1; i++)   {
+            for(int j = 1; j < brillos[i].length - 1; j++)   {
+                int suma = brillos[i - 1][j] + brillos[i + 1][j] + brillos[i][j + 1] + brillos[i][j - 1];
+                if(suma > 30)    {
+                    detectorEst[i][j] = true;
+                }
+            }
+        }
+        return detectorEst;
     }
 }
