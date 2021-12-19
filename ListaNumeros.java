@@ -19,7 +19,9 @@ public class ListaNumeros {
     public static final char CAR_CABECERA = '-';
 
     private static final Random generador = new Random();
-    //TODO
+    
+    int[] lista;
+    int pos;
     
     
 
@@ -31,7 +33,8 @@ public class ListaNumeros {
      * @param n el tamaño máximo de la lista
      */
     public ListaNumeros() {
-        //TODO
+        lista = new int[DIMENSION];
+        pos = 0;
         
     }
 
