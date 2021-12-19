@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 /**
  * Un objeto de esta clase
  * guarda una lista de números enteros
@@ -11,7 +12,6 @@ import java.util.Random;
  * @author - David Sena
  *
  */
-
 
 public class ListaNumeros {
     public static final int DIMENSION = 10;
@@ -81,7 +81,7 @@ public class ListaNumeros {
      * Vacía la lista
      */
     public void vaciarLista() {
-         pos = 0;
+        pos = 0;
     }
 
     /**
@@ -91,12 +91,26 @@ public class ListaNumeros {
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-        //TODO
-
-       
-        return "";
+        String texto = "";
+        String cabecera = "";
+        if(!estaVacia()){
+            for(int i = 0; i < pos; i++){
+                for(int j = 0; j < 6; j++){
+                cabecera += CAR_CABECERA;
+                }
+                
+            }
+            texto +=cabecera + "\n";
+            for(int i = 0; i < pos; i++){
+                texto += Utilidades.centrarNumero(lista[i], ANCHO_FORMATO);               
+            }
+            texto +="\n" + cabecera;
+        }
+        else{
+            return "";
+        }
+        return texto;
     }
-
 
     /**
      * Mostrar en pantalla la lista
@@ -124,13 +138,13 @@ public class ListaNumeros {
         //TODO
 
     }
+
     /**
      * El método coloca los valores que son segundos máximos al principio de
      * la lista respetando el orden de aparición del resto de elementos
      * 
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
-     * la lista
-     * 
+    i     * 
      * Si lista = {21, -5, 28, -7, 28, 77, 77, -17, 21, 15, 28, 28, 77} 
      * lista queda  {28, 28, 28, 28, 21, -5, -7, 77, 77, -17, 21, 15, 77} y se devuelve true
      * 
@@ -144,7 +158,6 @@ public class ListaNumeros {
     public void segundosMaximosAlPrincipio() {
         //TODO
 
-
     }
 
     /**
@@ -157,10 +170,15 @@ public class ListaNumeros {
      *  
      * Usa exclusivamente métodos de la clase Arrays
      */
-    public void buscarBinario() {
-        //TODO
-
-
+    public int buscarBinario(int numero) {
+        int[] copia = new int[lista.length];
+        System.arraycopy(lista, 0,copia, 0, pos);
+        Arrays.sort(copia);
+        int busqueda = Arrays.binarySearch(copia, numero);
+        if(busqueda < 0){
+            return -1;
+        }   
+        return busqueda;
     }
 
     /**
@@ -173,7 +191,6 @@ public class ListaNumeros {
      */
     public void crearBrillos() {
         //TODO
-
 
     }
 
@@ -192,7 +209,5 @@ public class ListaNumeros {
     public void detectarEstrellas() {
         //TODO
 
-       
     }
-
 }
