@@ -16,7 +16,7 @@ public class ListaNumeros {
     public static final int ANCHO_FORMATO = 6;
     public static final char CAR_CABECERA = '-';
 
-    private final Random generador = new Random();
+    private static final Random generador = new Random();
     private int lista[];
     private int pos;
 
@@ -262,7 +262,7 @@ public class ListaNumeros {
      * Estos valores van a representar el brillo de una zona del espacio
      * 
      */
-    public int[][] crearBrillos() {
+    public static int[][] crearBrillos() {
         int matriz [][] = new int [DIMENSION][DIMENSION];
         for (int fila = 0;fila < matriz.length;fila++){
             for(int colum = 0;colum < matriz[fila].length;colum++){
@@ -284,7 +284,7 @@ public class ListaNumeros {
      * 
      * Nota -  No hay estrellas en los bordes del array brillos
      */
-    public boolean[][] detectarEstrellas(int [][] matriz) {
+    public static boolean[][] detectarEstrellas(int [][] matriz) {
         boolean [][] resultado = new boolean[DIMENSION][DIMENSION];
         matriz = crearBrillos();
         for(int fila = 0; fila < matriz.length;fila++) {
