@@ -76,7 +76,7 @@ public class ListaNumeros {
     /**
      * @return el nº de elementos realmente guardados en la lista
      */
-    public void getTotalNumeros() {
+    public int getTotalNumeros() {
         return pos;
 
     }
@@ -85,7 +85,7 @@ public class ListaNumeros {
      * Vacía la lista
      */
     public void vaciarLista() {
-        //TODO
+        pos = 0;
     }
 
     /**
