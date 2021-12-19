@@ -16,7 +16,7 @@ public class ListaNumeros {
     public static final int ANCHO_FORMATO = 6;
     public static final char CAR_CABECERA = '-';
 
-    private static final Random generador = new Random();
+    private final Random generador = new Random();
     private int lista[];
     private int pos;
 
@@ -93,7 +93,7 @@ public class ListaNumeros {
         }
         else {
             String salida = "";
-            salida += guion(6 * lista.length);
+            salida += guion(6 * pos);
             salida += "\n";
             for (int i = 0;i < lista.length;i++) {
 
@@ -101,7 +101,7 @@ public class ListaNumeros {
 
             }
             salida += "\n";
-            salida += guion(6 * lista.length);
+            salida += guion(6 * pos);
             return salida;
         }
     }
@@ -145,37 +145,42 @@ public class ListaNumeros {
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
      * la lista
      */
-    public int segundoMaximo() {    
-        boolean comprobar = false;
+    public int segundoMaximo() {      
         int maximo = Integer.MIN_VALUE;
-        int maxsegundo = Integer.MIN_VALUE;
+        int maximo2 = Integer.MIN_VALUE;
+        boolean verificador = false;
         if (pos == 1) {
-            maxsegundo = Integer.MIN_VALUE;
-            return maxsegundo;
+            maximo2 = Integer.MIN_VALUE;
+            return maximo2;
         }
-        if(comprobar) {
-            maxsegundo = Integer.MIN_VALUE;
-        }
-        for(int i = 0; i < lista.length;i++){
-            if (maximo < lista[i]) {
+        
+        for(int i = 0; i < lista.length;i++) {
+            if (lista[i] > maximo) {
                 maximo = lista [i];
+
             }
+
         }
-        for(int i = 0; i < lista.length;i++){
-            if (lista[i] < maximo && lista[i] > maxsegundo) {
-                maxsegundo = lista [i];
+        for(int i = 0; i < lista.length;i++) {
+            if (lista[i] > maximo2 && lista[i] < maximo) {
+                maximo2 = lista [i];
+
             }
+
         }
         for(int i = 1; i < lista.length;i++) {
-            if(lista[i] == lista[i - 1]){
-                comprobar = true;
+            if(lista[i] == lista[i - 1]) {
+                verificador = true;
             }
-            else{
-                comprobar = false;
-                return maxsegundo;
+            else {
+                verificador = false;
+                return maximo2;
             }
         }
-        return maxsegundo;
+        if( verificador) {
+            maximo2 = Integer.MIN_VALUE;
+        }
+        return maximo2;
     }
 
     /**
@@ -195,8 +200,8 @@ public class ListaNumeros {
      * @return true si se han colocado los segundos máximos
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
-    public boolean segundosMaximosAlPrincipio() {
-    return false;
+    public void segundosMaximosAlPrincipio() {
+
     }
 
     /**
@@ -237,10 +242,10 @@ public class ListaNumeros {
      * Estos valores van a representar el brillo de una zona del espacio
      * 
      */
-    public static int[][] crearBrillos() {
-        int [][] matriz = new int[DIMENSION][DIMENSION];
-        for(int fila = 0; fila < matriz.length; fila++){
-            for(int colum = 0; colum < matriz[fila].length; colum++) {
+    public int[][] crearBrillos() {
+        int matriz [][] = new int [DIMENSION][DIMENSION];
+        for (int fila = 0;fila < matriz.length;fila++){
+            for(int colum = 0;colum < matriz[fila].length;colum++){
                 matriz[fila][colum]= generador.nextInt(11);
             }
         }
@@ -259,11 +264,11 @@ public class ListaNumeros {
      * 
      * Nota -  No hay estrellas en los bordes del array brillos
      */
-    public static boolean[][] detectarEstrellas(int [][] matriz) {
+    public boolean[][] detectarEstrellas(int [][] matriz) {
         boolean [][] resultado = new boolean[DIMENSION][DIMENSION];
         matriz = crearBrillos();
-        for(int fila = 1; fila < matriz.length -1;fila++) {
-            for(int colum = 1;colum < matriz[fila].length - 1;colum++) {
+        for(int fila = 0; fila < matriz.length;fila++) {
+            for(int colum = 0;colum < matriz[fila].length;colum++) {
                 int conjunto = matriz[fila][colum] + matriz[fila][colum] + matriz[fila][colum]+ matriz[fila][colum];
                 if(30 < conjunto) {
                     resultado[fila][colum] = true;
