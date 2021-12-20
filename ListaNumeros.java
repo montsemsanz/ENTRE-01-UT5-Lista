@@ -96,9 +96,9 @@ public class ListaNumeros {
         if(!estaVacia()){
             for(int i = 0; i < pos; i++){
                 for(int j = 0; j < 6; j++){
-                cabecera += CAR_CABECERA;
+                    cabecera += CAR_CABECERA;
                 }
-                
+
             }
             texto +=cabecera + "\n";
             for(int i = 0; i < pos; i++){
@@ -189,9 +189,15 @@ public class ListaNumeros {
      * Estos valores van a representar el brillo de una zona del espacio
      * 
      */
-    public void crearBrillos() {
-        //TODO
+    public int[][] crearBrillos() {
+        int[][] brillo = new int[DIMENSION][DIMENSION];
+        for(int i = 0; i < DIMENSION; i++){
+            for(int j = 0; j<brillo[i].length;j++){
+                brillo[i][j] = generador.nextInt(11);    
+            } 
+        }
 
+        return brillo;
     }
 
     /**
@@ -206,8 +212,26 @@ public class ListaNumeros {
      * 
      * Nota -  No hay estrellas en los bordes del array brillos
      */
-    public void detectarEstrellas() {
-        //TODO
+    public boolean[][] detectarEstrellas(int[][] brillos) {
+        //int suma = 0;
+        boolean[][] estrella =  new boolean[brillos.length][brillos[0].length];
+        //for(int f = 0; f < brillos.length-1; f++){
+           // for(int c = 0; c<brillos[f].length-1;c++){
+            //    brillos[f][c] = generador.nextInt(11);
+             //   if(brillos[0][c] ){
+             //       estrella[f][c] = false;
+              //  } 
+              //  else{
+              //      if ((brillos[f+1][c] + brillos[f-1][c] + brillos[f][c+1] + brillos[f][c-1]) > 30){
+              //          estrella[f][c] = true;
+              //      }
+              //      else{
+               //         estrella[f][c] = false;
+               //     }
+              //  }
+           // }
+        //}
 
+        return estrella;  
     }
 }
