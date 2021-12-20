@@ -32,7 +32,6 @@ public class ListaNumeros {
     public ListaNumeros(int n) {
         this.lista = new int[n];
         this.pos = 0;
-        
     }
 
     /**
@@ -42,44 +41,43 @@ public class ListaNumeros {
      * @param numero el valor que se añade.  
      * @return true si se ha podido añadir, false en otro caso
      */
-    public void addElemento() {
-        //TODO
-        
-        
-
+    public boolean addElemento(int numero) {
+        if(!estaCompleta()){
+            lista[pos] = numero;
+            pos++;
+            return true;
+        }
+        return false;
     }
 
     /**
      * @return true si la lista está completa, false en otro caso
      * Hacer sin if
      */
-    public void estaCompleta() {
-        //TODO
-
+    public boolean estaCompleta() {
+        return pos == lista.length;
     }
 
     /**
      * @return true si la lista está vacía, false en otro caso.
      * Hacer sin if
      */
-    public void estaVacia() {
-       //TODO
-
+    public boolean estaVacia() {
+       return pos == 0;
     }
 
     /**
      * @return el nº de elementos realmente guardados en la lista
      */
-    public void getTotalNumeros() {
-        //TODO
-
+    public int getTotalNumeros() {
+        return pos;
     }
 
     /**
      * Vacía la lista
      */
     public void vaciarLista() {
-       //TODO
+       pos = 0;
     }
 
     /**
@@ -120,10 +118,16 @@ public class ListaNumeros {
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
      * la lista
      */
-    public void segundoMaximo() {       
-       //TODO
-
-        
+    public int segundoMaximo() {    
+       int max = 0;
+       int segundoMaximo = 0;
+       for(int i = 1 ; i < lista.length ; i++){
+           max = Math.max(max,lista[i]);
+           if(lista[i] < max && lista[i] > segundoMaximo){
+               segundoMaximo = lista[i];
+           }
+       }
+       return segundoMaximo;
     }
 
     /**
