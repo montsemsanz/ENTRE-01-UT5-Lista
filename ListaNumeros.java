@@ -9,7 +9,7 @@ import java.util.Arrays;
  * y dos  métodos estáticos para trabajar con
  * arrays de dos dimensiones
  *
- * @author -
+ * @author - Aimar Sanchez
  */
 
 public class ListaNumeros {
@@ -48,25 +48,6 @@ public class ListaNumeros {
         }
         return false;
 
-    }
-
-    /**
-     * 
-     * @return devuelve un array bidimensional de enteros de tamaño DIMENSION
-     * inicializado con valores aleatorios entre 0 y 10 inclusive
-     * 
-     * Estos valores van a representar el brillo de una zona del espacio
-     * 
-     */
-    public static int[][] crearBrillos()
-    {
-        int[][] brillos = new int[DIMENSION][DIMENSION];
-        for (int fila = 0; fila < brillos.length; fila++) {
-            for (int col = 0; col < brillos[fila].length; col++) {
-                brillos[fila][col] = generador.nextInt(11);
-            }
-        }
-        return brillos;
     }
 
     /**
@@ -185,9 +166,23 @@ public class ListaNumeros {
      * @return true si se han colocado los segundos máximos
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
-    public void segundosMaximosAlPrincipio() {
-        //TODO
-
+     public boolean segundosMaximosAlPrincipio() {
+        if(segundoMaximo() != Integer.MIN_VALUE){
+            for(int a = 0; a < pos; a++){
+                if(lista[a] == segundoMaximo()){
+                    int valor = lista[a];
+                    System.arraycopy(lista,a + 1, lista, a, pos - a - 1);
+                    pos--;
+                    System.arraycopy(lista,0,lista,1,pos);
+                    lista[0] = valor;
+                    pos++;
+                }
+            }
+        }
+        else{
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -211,6 +206,25 @@ public class ListaNumeros {
         else {
             return pos -1;  
         }
+    }
+
+    /**
+     * 
+     * @return devuelve un array bidimensional de enteros de tamaño DIMENSION
+     * inicializado con valores aleatorios entre 0 y 10 inclusive
+     * 
+     * Estos valores van a representar el brillo de una zona del espacio
+     * 
+     */
+    public static int[][] crearBrillos()
+    {
+        int[][] brillos = new int[DIMENSION][DIMENSION];
+        for (int fila = 0; fila < brillos.length; fila++) {
+            for (int col = 0; col < brillos[fila].length; col++) {
+                brillos[fila][col] = generador.nextInt(11);
+            }
+        }
+        return brillos;
     }
 
     /**
