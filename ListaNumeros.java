@@ -51,6 +51,25 @@ public class ListaNumeros {
     }
 
     /**
+     * 
+     * @return devuelve un array bidimensional de enteros de tamaño DIMENSION
+     * inicializado con valores aleatorios entre 0 y 10 inclusive
+     * 
+     * Estos valores van a representar el brillo de una zona del espacio
+     * 
+     */
+    public static int[][] crearBrillos()
+    {
+        int[][] brillos = new int[DIMENSION][DIMENSION];
+        for (int fila = 0; fila < brillos.length; fila++) {
+            for (int col = 0; col < brillos[fila].length; col++) {
+                brillos[fila][col] = generador.nextInt(11);
+            }
+        }
+        return brillos;
+    }
+
+    /**
      * @return true si la lista está completa, false en otro caso
      * Hacer sin if
      */
@@ -126,9 +145,27 @@ public class ListaNumeros {
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
      * la lista
      */
-    public void segundoMaximo() {       
-        //TODO
-
+    public int segundoMaximo() {       
+        int aux = Integer.MIN_VALUE;
+        int aux1 = Integer.MAX_VALUE;
+        for (int a = 0; a < pos; a++) {
+            if (lista[a] > aux) {
+                aux = lista[a];
+            }
+            if (lista[a] < aux1) {
+                aux1 = lista[a];
+            }
+        }
+        for (int b = 0; b < pos; b++) {
+            if (lista[b] < aux && lista[b] > aux1) {
+                aux1= lista[b];
+            }
+        }
+        if (aux == aux1) {
+            aux1= Integer.MIN_VALUE;
+        }
+        aux = aux1;
+        return aux;
     }
 
     /**
@@ -163,22 +200,17 @@ public class ListaNumeros {
      *  
      * Usa exclusivamente métodos de la clase Arrays
      */
-    public void buscarBinario() {
-        //TODO
+    public int buscarBinario(int numero) {
+        int[] listaCopia = Arrays.copyOf(lista, pos);
+        Arrays.sort(listaCopia);
+        int pos = Arrays.binarySearch(listaCopia, numero);
 
-    }
-
-    /**
-     * 
-     * @return devuelve un array bidimensional de enteros de tamaño DIMENSION
-     * inicializado con valores aleatorios entre 0 y 10 inclusive
-     * 
-     * Estos valores van a representar el brillo de una zona del espacio
-     * 
-     */
-    public void crearBrillos() {
-        //TODO
-
+        if (pos < 0) {
+            return -1;
+        }
+        else {
+            return pos -1;  
+        }
     }
 
     /**
