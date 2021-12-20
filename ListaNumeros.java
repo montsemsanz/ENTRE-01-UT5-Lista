@@ -7,7 +7,7 @@
  * y dos  métodos estáticos para trabajar con
  * arrays de dos dimensiones
  *
- * @author -
+ * @author - Alejandro Torreguitart
  */
 
 
@@ -19,10 +19,9 @@ public class ListaNumeros {
     public static final char CAR_CABECERA = '-';
 
     private static final Random generador = new Random();
-    //TODO
+    private int lista[];
+    private int pos;
     
-    
-
     /**
      * Constructor de la clase ListaNumeros
      * Crea e inicializa adecuadamente los
@@ -30,8 +29,9 @@ public class ListaNumeros {
      *
      * @param n el tamaño máximo de la lista
      */
-    public ListaNumeros() {
-        //TODO
+    public ListaNumeros(int n) {
+        this.lista = new int[n];
+        this.pos = 0;
         
     }
 
