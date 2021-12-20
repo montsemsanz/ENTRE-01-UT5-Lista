@@ -1,3 +1,4 @@
+
 /**
  * Un objeto de esta clase
  * guarda una lista de números enteros
@@ -7,10 +8,11 @@
  * y dos  métodos estáticos para trabajar con
  * arrays de dos dimensiones
  *
- * @author -
+ * @author - Javier Mayor
  */
 
 import java.util.Random;
+import java.util.Arrays;
 public class ListaNumeros {
     public static final int DIMENSION = 10;
     public static final int ANCHO_FORMATO = 6;
@@ -165,10 +167,9 @@ public class ListaNumeros {
                 int num = lista[0];
 
                 for(int j = i; j > 0; j--){
-                    
+
                     lista[j] = lista[j - 1];
-                    
-                    
+
                 }
                 lista[0]  = numeros;
                 return true;
@@ -188,10 +189,19 @@ public class ListaNumeros {
      *  
      * Usa exclusivamente métodos de la clase Arrays
      */
-    public void buscarBinario() {
-        //TODO
+    public int buscarBinario(int numero) {
+        int[] copia = new int[pos];
+        for(int i = 0; i <= pos -1; i++){
 
+            copia[i] = lista[i];
+
+        }
+
+        Arrays.sort(copia);
+        int pos = Arrays.binarySearch(copia,numero);
+        return pos;
     }
+
     /**
      * 
      * @return devuelve un array bidimensional de enteros de tamaño DIMENSION
@@ -204,6 +214,7 @@ public class ListaNumeros {
         //TODO
 
     }
+
     /**
      * @param  un array bidimensional brillos 
      * @return un nuevo array bidimensional de valores booleanos
