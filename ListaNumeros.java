@@ -50,7 +50,7 @@ public class ListaNumeros {
         return false;
 
     }
-    
+
     /**
      * @return true si la lista está completa, false en otro caso
      * Hacer sin if
@@ -104,9 +104,13 @@ public class ListaNumeros {
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-        //TODO
+        String cadena = "";
+        if (estaVacia()) {
+            System.out.println("clean");
+            return "";
 
-        return "";
+        }
+        return cadena;
     }
 
     /**
@@ -131,9 +135,16 @@ public class ListaNumeros {
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
      * la lista
      */
-    public void segundoMaximo() {       
-        //TODO
-
+    public int segundoMaximo() {       
+        int primerMax = Integer.MIN_VALUE;
+        int segundoMax = Integer.MIN_VALUE;
+        for (int i = 0; i < lista.length; i++) {
+            if (segundoMax < lista[i] && lista[i] != 0) {
+                segundoMax = primerMax;
+                primerMax = lista[i];
+            }
+        }
+        return segundoMax;
     }
 
     /**
@@ -153,9 +164,21 @@ public class ListaNumeros {
      * @return true si se han colocado los segundos máximos
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
-    public void segundosMaximosAlPrincipio() {
-        //TODO
-
+    public boolean segundosMaximosAlPrincipio() {
+        
+        if (segundoMaximo() != Integer.MIN_VALUE) {
+            for (int i = 0; i < lista.length; i++) {
+                if (lista[i] == segundoMaximo()) {
+                    for (int j = i; j > 0; j--) {
+                        lista[j] = lista[j - 1];
+                    }
+                    lista[0] = segundoMaximo();
+                    
+                }
+            }
+            return true;
+        } 
+        return false;
     }
 
     /**
