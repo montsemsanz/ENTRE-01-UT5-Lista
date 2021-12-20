@@ -21,7 +21,6 @@ public class ListaNumeros {
     int[] lista;
     int pos;
 
-
     /**
      * Constructor de la clase ListaNumeros
      * Crea e inicializa adecuadamente los
@@ -97,10 +96,8 @@ public class ListaNumeros {
     public String toString() {
         String str = "";
 
-       
         return str;
     }
-
 
     /**
      * Mostrar en pantalla la lista
@@ -128,22 +125,21 @@ public class ListaNumeros {
         int maximo = Integer.MIN_VALUE;
         int maximo2 = Integer.MIN_VALUE;
         for(int i = 0; i <= pos; i++){
-            if(lista[i] <= maximo){
+            if(lista[i] >= maximo){
                 maximo2 = maximo;
                 maximo = lista[i];
-            
+
             }
-            else if(lista[i] <= maximo2){
-            
+            else if(lista[i] >= maximo2){
+
                 maximo2 = lista[i];
-            
+
             }
-            
-        
+
         }
-        
         return maximo2;
     }
+
     /**
      * El método coloca los valores que son segundos máximos al principio de
      * la lista respetando el orden de aparición del resto de elementos
@@ -161,10 +157,25 @@ public class ListaNumeros {
      * @return true si se han colocado los segundos máximos
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
-    public void segundosMaximosAlPrincipio() {
-        //TODO
+    public boolean segundosMaximosAlPrincipio() {
+        int numeros = segundoMaximo();
 
+        for(int i = 0; i <= pos - 1; i++){
+            if(lista[i] == numeros){
+                int num = lista[0];
 
+                for(int j = i; j > 0; j--){
+                    
+                    lista[j] = lista[j - 1];
+                    
+                    
+                }
+                lista[0]  = numeros;
+                return true;
+            }
+
+        }
+        return false;
     }
 
     /**
@@ -180,9 +191,7 @@ public class ListaNumeros {
     public void buscarBinario() {
         //TODO
 
-
     }
-
     /**
      * 
      * @return devuelve un array bidimensional de enteros de tamaño DIMENSION
@@ -194,9 +203,7 @@ public class ListaNumeros {
     public void crearBrillos() {
         //TODO
 
-
     }
-
     /**
      * @param  un array bidimensional brillos 
      * @return un nuevo array bidimensional de valores booleanos
@@ -212,7 +219,5 @@ public class ListaNumeros {
     public void detectarEstrellas() {
         //TODO
 
-       
     }
-
 }
