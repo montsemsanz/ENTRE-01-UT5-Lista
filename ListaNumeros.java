@@ -213,24 +213,20 @@ public class ListaNumeros {
      * Nota -  No hay estrellas en los bordes del array brillos
      */
     public boolean[][] detectarEstrellas(int[][] brillos) {
-        //int suma = 0;
+        int suma = 0;
         boolean[][] estrella =  new boolean[brillos.length][brillos[0].length];
-        //for(int f = 0; f < brillos.length-1; f++){
-           // for(int c = 0; c<brillos[f].length-1;c++){
-            //    brillos[f][c] = generador.nextInt(11);
-             //   if(brillos[0][c] ){
-             //       estrella[f][c] = false;
-              //  } 
-              //  else{
-              //      if ((brillos[f+1][c] + brillos[f-1][c] + brillos[f][c+1] + brillos[f][c-1]) > 30){
-              //          estrella[f][c] = true;
-              //      }
-              //      else{
-               //         estrella[f][c] = false;
-               //     }
-              //  }
-           // }
-        //}
+        for(int f = 1; f < brillos.length-1; f++){
+            for(int c = 1; c<brillos[f].length-1;c++){
+                brillos[f][c] = generador.nextInt(11);
+
+                if ((brillos[f+1][c] + brillos[f-1][c] + brillos[f][c+1] + brillos[f][c-1]) > 30){
+                    estrella[f][c] = true;
+                }
+                else{
+                    estrella[f][c] = false;
+                }
+            }
+        }
 
         return estrella;  
     }
