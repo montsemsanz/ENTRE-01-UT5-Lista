@@ -66,7 +66,7 @@ public class ListaNumeros {
      * @return el nº de elementos realmente guardados en la lista
      */
     public int getTotalNumeros() {
-        return pos - 1;
+        return pos;
 
     }
 
@@ -96,7 +96,7 @@ public class ListaNumeros {
     }
     private String hacerLinea(int n){
         String str = "";
-        for (int i = 1; i <= n * 6; i++) {
+        for (int i = 1; i <= n * ANCHO_FORMATO; i++) {
             str += CAR_CABECERA;
         }
         str += "\n";
@@ -126,10 +126,17 @@ public class ListaNumeros {
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
      * la lista
      */
-    public void segundoMaximo() {       
-       //TODO
-
-        
+    public int segundoMaximo() {       
+        int num1 = Integer.MIN_VALUE;
+        int num2 = Integer.MIN_VALUE;
+        for (int i = 0; i < pos; i++) {
+            if (lista[i] > num2) {
+            num2 = num1;
+            num1 = lista[i];
+           }
+            
+        }
+        return num1;
     }
 
     /**
@@ -149,11 +156,20 @@ public class ListaNumeros {
      * @return true si se han colocado los segundos máximos
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
-    public void segundosMaximosAlPrincipio() {
-        //TODO
-        
-        
-
+    public boolean segundosMaximosAlPrincipio() {
+        int segMax = segundoMaximo();
+        if (segMax == Integer.MIN_VALUE){
+            return false;
+        }
+        for (int i = 0; i < pos; i++) {
+            if (segMax == lista[i]) {
+                for (int j = pos - 1; j > 0; j--) {
+                    lista[j] = lista[j-1];
+                }
+                lista[i] = lista[0];
+            }
+        }
+        return true;
     }
 
     /**
@@ -181,11 +197,17 @@ public class ListaNumeros {
      * Estos valores van a representar el brillo de una zona del espacio
      * 
      */
-    public void crearBrillos() {
-       //TODO
+    public int[][] crearBrillos() {
+        int[][] matriz = new int[DIMENSION][DIMENSION];
+        int valor = 0;
+        for (int fila = 0; fila < matriz.length; fila++) {
+            for (int columna = 0; columna < matriz[fila].length; columna++){
+                valor = generador.nextInt(10);
+                matriz[fila][columna] = valor;
+            }
+        }
        
-       
-
+        return matriz;
     }
 
     /**
