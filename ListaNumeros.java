@@ -7,11 +7,12 @@
  * y dos  métodos estáticos para trabajar con
  * arrays de dos dimensiones
  *
- * @author -
+ * @author - Aimar
  */
 
 
 import java.util.Random;
+import java.util.Arrays;
 
 public class ListaNumeros {
     public static final int DIMENSION = 10;
@@ -19,7 +20,8 @@ public class ListaNumeros {
     public static final char CAR_CABECERA = '-';
 
     private static final Random generador = new Random();
-    //TODO
+    private int[] lista;
+    private int pos;
     
     
 
@@ -30,8 +32,8 @@ public class ListaNumeros {
      *
      * @param n el tamaño máximo de la lista
      */
-    public ListaNumeros() {
-        //TODO
+    public ListaNumeros(int n) {
+        lista = new int[n];
         
     }
 
@@ -42,19 +44,22 @@ public class ListaNumeros {
      * @param numero el valor que se añade.  
      * @return true si se ha podido añadir, false en otro caso
      */
-    public void addElemento() {
-        //TODO
+    public boolean addElemento(int n) {
+        if(!estaCompleta()){
+            lista[pos] = n;
+            pos++;
+            return true;
+        }
         
-        
-
+        return false;
     }
 
     /**
      * @return true si la lista está completa, false en otro caso
      * Hacer sin if
      */
-    public void estaCompleta() {
-        //TODO
+    public boolean estaCompleta() {
+        return pos == lista.length;
 
     }
 
@@ -62,16 +67,16 @@ public class ListaNumeros {
      * @return true si la lista está vacía, false en otro caso.
      * Hacer sin if
      */
-    public void estaVacia() {
-       //TODO
+    public boolean estaVacia() {
+       return pos == 0;
 
     }
 
     /**
      * @return el nº de elementos realmente guardados en la lista
      */
-    public void getTotalNumeros() {
-        //TODO
+    public int getTotalNumeros() {
+        return pos;
 
     }
 
@@ -79,7 +84,7 @@ public class ListaNumeros {
      * Vacía la lista
      */
     public void vaciarLista() {
-       //TODO
+       pos = 0;
     }
 
     /**
@@ -89,11 +94,24 @@ public class ListaNumeros {
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-       //TODO
-       
-       
-       
-       return "";
+        if (estaVacia()){
+            return "";
+        }
+        Utilidades centrar = new Utilidades();
+        int total = getTotalNumeros();
+        String str = "";   
+        for (int j = 0; j < ANCHO_FORMATO * total ; j++){
+                str += CAR_CABECERA;
+            }
+        str += "\n";
+        for (int i = 0; i < pos; i++){
+            str += centrar.centrarNumero(lista[i], ANCHO_FORMATO);
+        }
+        str += "\n";
+        for (int j = 0; j < ANCHO_FORMATO * total; j++){
+                str += CAR_CABECERA;
+            }
+        return str;
     }
 
      
@@ -120,9 +138,21 @@ public class ListaNumeros {
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
      * la lista
      */
-    public void segundoMaximo() {       
-       //TODO
-
+    public int segundoMaximo() {       
+        int max = Integer.MIN_VALUE;
+        int segmax = Integer.MIN_VALUE;
+        for (int i = 0; i < pos; i++){
+            max = Math.max(max,lista[i]);
+        }
+        for (int i = 0; i < pos; i++){
+            if (lista[i] != max){
+                segmax = Math.max(segmax, lista[i]);
+            }
+        }
+        if(segmax == max){
+            return Integer.MIN_VALUE;
+        }
+        return segmax;
         
     }
 
@@ -143,11 +173,21 @@ public class ListaNumeros {
      * @return true si se han colocado los segundos máximos
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
-    public void segundosMaximosAlPrincipio() {
-        //TODO
+    public boolean segundosMaximosAlPrincipio() {
+        int segmax = segundoMaximo();
         
-        
-
+        for (int i = 0; i < lista.length; i++){
+            if (lista[i] == segmax){
+                for (int j = i; j > 0; j--){
+                    lista[j] = lista[j-1];
+                }
+                lista[0] = segmax;
+            }
+        }      
+        if (lista [0] == lista[pos-1]){
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -160,11 +200,14 @@ public class ListaNumeros {
      *  
      * Usa exclusivamente métodos de la clase Arrays
      */
-    public void buscarBinario() {
-         //TODO
-         
-         
-
+    public int buscarBinario(int numero) {
+        int[] copia = lista;
+        Arrays.sort(copia, 0, pos);
+        int a = Arrays.binarySearch(copia, numero);
+        if (a > 0 && a < pos){
+            return a;
+        }
+        return -1;
     }
 
     /**
@@ -175,11 +218,15 @@ public class ListaNumeros {
      * Estos valores van a representar el brillo de una zona del espacio
      * 
      */
-    public void crearBrillos() {
-       //TODO
-       
-       
-
+    public static int[][] crearBrillos() {
+        int [][] brillos = new int [DIMENSION][DIMENSION];
+        for(int f = 0; f < DIMENSION; f++){
+            for (int c = 0; c < DIMENSION; c++){
+                brillos[f][c] = (int)(Math.random() * 10 + 1);
+            }
+        }
+        
+        return brillos;
     }
 
     /**
@@ -194,11 +241,18 @@ public class ListaNumeros {
      * 
      * Nota -  No hay estrellas en los bordes del array brillos
      */
-    public void detectarEstrellas() {
-       //TODO
-       
-       
-       
+    public static boolean[][] detectarEstrellas(int[][] brillos) {
+        boolean[][] estrellas = new boolean[DIMENSION][DIMENSION];
+        for(int f = 1; f < brillos.length - 1; f++){
+            for (int c = 1; c < brillos[f].length - 1; c++){
+                if (((brillos[f-1][c]) + (brillos[f+1][c]) + (brillos[f][c-1]) + 
+                    (brillos[f][c+1]) > 30)){
+                    estrellas[f][c] = true;
+                }
+            }
+        }
+
+        return estrellas;
     }
 
 }
