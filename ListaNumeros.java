@@ -30,8 +30,8 @@ public class ListaNumeros {
      *
      * @param n el tamaño máximo de la lista
      */
-    public ListaNumeros() {
-        lista = new int[DIMENSION];
+    public ListaNumeros(int tamaño) {
+        lista = new int[tamaño];
         pos = 0;
 
     }
@@ -237,20 +237,34 @@ public class ListaNumeros {
         return brillos;
     }
 
-    // /**
-     // * @param  un array bidimensional brillos 
-     // * @return un nuevo array bidimensional de valores booleanos
-     // *          de las mismas dimensiones que el array brillos con
-     // *          valores true en las posiciones donde hay estrellas
-     // * 
-     // * Una posición f,c del array brillos es una estrella 
-     // * si la suma del valor de los brillos de sus cuatro vecinos 
-     // * (arriba, abajo, derecha e izquierda) es mayor que 30
-     // * 
-     // * Nota -  No hay estrellas en los bordes del array brillos
-     // */
-    // public int[][] detectarEstrellas(int[][] brillos) {
-        // TODO
+    /**
+     * @param  un array bidimensional brillos 
+     * @return un nuevo array bidimensional de valores booleanos
+     *          de las mismas dimensiones que el array brillos con
+     *          valores true en las posiciones donde hay estrellas
+     * 
+     * Una posición f,c del array brillos es una estrella 
+     * si la suma del valor de los brillos de sus cuatro vecinos 
+     * (arriba, abajo, derecha e izquierda) es mayor que 30
+     * 
+     * Nota -  No hay estrellas en los bordes del array brillos
+     */
+    public static boolean[][] detectarEstrellas(int[][] brillos) {
+        boolean[][] estrellas = new boolean [brillos.length][brillos[1].length];
+        for(int i = 0; i <= brillos.length; i++){
+        
+            for(int j = 0; j <= brillos[i].length;j++){
+                
+                if(brillos[i-1][j] + brillos[i+1][j] + brillos[i][j-1] + brillos[i][j+1] > 30){
+                
+                    estrellas[i][j] = true;
+                }
+                            
+            }
+        
+        }
+        
+        return estrellas;
 
-    // }
+    }
 }
