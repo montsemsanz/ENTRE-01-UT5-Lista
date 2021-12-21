@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 /**
  * Un objeto de esta clase
  * guarda una lista de números enteros
@@ -87,12 +88,13 @@ public class ListaNumeros {
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-        //TODO
+        Utilidades imagen = new Utilidades();
         String str = "";
-        for(int a = 0; a<=pos; a++){
-            str = "------" + "\n";
-            str += "   " + lista[a] + "      \n";
-            str += "------" + "\n";
+        for(int a = 0; a<=pos-1; a++){
+            str += imagen.centrarNumero(lista[a], ANCHO_FORMATO);
+        }
+        if(pos == 0){
+        str = " ";
         }
         return str;
     }  
@@ -122,22 +124,19 @@ public class ListaNumeros {
      */
     public int segundoMaximo() {       
         int primero = lista[0];
-        int segundo = 0;
-        if(lista[1] > lista[0]){
-            primero = lista[1];
-            segundo = lista[0];
+        int segundo = Integer.MIN_VALUE;
+        for(int i = 1; i<pos; i++){
+        if(primero<lista[i]){
+            segundo = primero;
+            primero = lista[i];
         }
-        else{
-            segundo = lista[1];
+          if(primero == lista[i]){
+        primero = lista[i];
         }
-        for(int i = 2; i<=pos; i++){
-            if(lista[i] <= primero && lista[i] > segundo){
-                lista[i] = segundo;
-            }
-            if(lista[i]> primero){
-                segundo = primero;
-                primero = lista[i];
-            }
+        
+        else if(segundo<lista[i] && primero > lista[i]){
+        segundo = lista[i];
+        }
         }
         return segundo;
     }
@@ -160,14 +159,19 @@ public class ListaNumeros {
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
     public boolean segundosMaximosAlPrincipio() {
-        //TODO
+        int s = segundoMaximo();
         for(int x = 0; x<pos; x++){
-            if(lista[x] == segundoMaximo()){
-                for(int j = 0; j<x; j++){
-                    lista[x+1] = lista[x];
-                    lista[0] = segundoMaximo(); 
+            if(lista[x] == s){
+                for(int j = x; j>0; j--){
+                    lista[x] = lista[x-1];
+                     lista[0] = s;
+                
                 }
-            }
+                
+                }
+        }
+        if(s == Integer.MIN_VALUE){
+        return false;
         }
         return true;
 
@@ -183,17 +187,11 @@ public class ListaNumeros {
      * Usa exclusivamente métodos de la clase Arrays
      */
     public int buscarBinario(int numero) {
-        //TODO
-        int binario = 0;
-        for(int x = 0; x<pos; x++){
-            if(lista[x] == numero){
-                return x;
-            }
-            else{
-                binario = -1;
-            }
-        }
-        return binario;
+        int[] copia = new int[lista.length];
+        System.arraycopy(lista, 0, copia, 0, lista.length);
+        int index = Arrays.binarySearch(copia, numero);
+        return index;
+        
     }
 
     /**
@@ -229,7 +227,6 @@ public class ListaNumeros {
      * Nota -  No hay estrellas en los bordes del array brillos
      */
     public static boolean[][] detectarEstrellas(int[][] brillos) {
-        //TODO
         boolean[][] estrellas;
         estrellas = new boolean[DIMENSION][DIMENSION];
         for(int fila=1; fila<estrellas.length -1; fila++){
