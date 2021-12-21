@@ -1,3 +1,4 @@
+import java.util.Random;
 /**
  * Un objeto de esta clase
  * guarda una lista de números enteros
@@ -7,22 +8,16 @@
  * y dos  métodos estáticos para trabajar con
  * arrays de dos dimensiones
  *
- * @author -
+ * @author - Rubén Saiz
  */
-
-
-import java.util.Random;
-
 public class ListaNumeros {
     public static final int DIMENSION = 10;
     public static final int ANCHO_FORMATO = 6;
     public static final char CAR_CABECERA = '-';
 
     private static final Random generador = new Random();
-    //TODO
-    
-    
-
+    private int[] lista;
+    private int pos;
     /**
      * Constructor de la clase ListaNumeros
      * Crea e inicializa adecuadamente los
@@ -30,9 +25,9 @@ public class ListaNumeros {
      *
      * @param n el tamaño máximo de la lista
      */
-    public ListaNumeros() {
-        //TODO
-        
+    public ListaNumeros(int n) {
+        lista = new int[n];
+        pos = 0;
     }
 
     /**
@@ -42,36 +37,36 @@ public class ListaNumeros {
      * @param numero el valor que se añade.  
      * @return true si se ha podido añadir, false en otro caso
      */
-    public void addElemento() {
-        //TODO
-        
-        
-
+    public boolean addElemento(int numero) {
+        if (estaCompleta()) {
+            return false;
+        }
+        lista[pos] = numero;
+        pos++;
+        return true;
     }
 
     /**
      * @return true si la lista está completa, false en otro caso
      * Hacer sin if
      */
-    public void estaCompleta() {
-        //TODO
-
+    public boolean estaCompleta() {
+        return pos == lista.length;
     }
 
     /**
      * @return true si la lista está vacía, false en otro caso.
      * Hacer sin if
      */
-    public void estaVacia() {
-       //TODO
-
+    public boolean estaVacia() {
+       return pos == 0;
     }
 
     /**
      * @return el nº de elementos realmente guardados en la lista
      */
-    public void getTotalNumeros() {
-        //TODO
+    public int getTotalNumeros() {
+        return pos - 1;
 
     }
 
@@ -79,7 +74,7 @@ public class ListaNumeros {
      * Vacía la lista
      */
     public void vaciarLista() {
-       //TODO
+       pos = 0;
     }
 
     /**
@@ -89,13 +84,24 @@ public class ListaNumeros {
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-       //TODO
-       
-       
-       
-       return "";
+       if (estaVacia()) {
+           return "";
+       }
+       String str = hacerLinea(pos);
+       for (int i = 0; i < pos; i++) {
+           str += Utilidades.centrarNumero(lista[i], ANCHO_FORMATO);
+       }
+       str += "\n" + hacerLinea(pos);
+       return str;
     }
-
+    private String hacerLinea(int n){
+        String str = "";
+        for (int i = 1; i <= n * 6; i++) {
+            str += CAR_CABECERA;
+        }
+        str += "\n";
+        return str;
+    }
      
 
     /**
