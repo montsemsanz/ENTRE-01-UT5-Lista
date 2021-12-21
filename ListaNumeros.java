@@ -47,7 +47,9 @@ public class ListaNumeros {
             pos++;
             return true;
         }
-        return false;
+        else {
+            return false;
+        }
     }
 
     /**
@@ -178,20 +180,20 @@ public class ListaNumeros {
      * @return true si se han colocado los segundos máximos
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
-    // public boolean segundosMaximosAlPrincipio() {
-        // int j = 0;
-        // boolean distinta = true;
-        // for (int i = 0; i < pos; i++) {
-            // if (lista[i] == segundoMaximo()) {
-                
-                // distinta = true;    
-            // }
-            // else {
-                // distinta = false;
-            // }
-        // }
-        // return distinta;
-    // }
+    public boolean segundosMaximosAlPrincipio() {
+        boolean distinta = false;
+        for (int i = 0; i < pos; i++) {
+            if (lista[i] == segundoMaximo()) {
+                int aux = lista[i];
+                for (int j = i; j > 0; j--) {
+                    lista[j] = lista[j-1];
+                }
+                lista[0] = aux;
+                distinta = true;
+            }
+        }
+        return distinta;
+    }
 
     /**
      * @param numero búsqueda binaria de  numero en lista
@@ -207,7 +209,6 @@ public class ListaNumeros {
         int[] listaCopia = Arrays.copyOf(lista, pos);
         Arrays.sort(listaCopia);
         int pos = Arrays.binarySearch(listaCopia, numero);
-
         if (pos < 0) {
             return -1;
         }
@@ -217,14 +218,12 @@ public class ListaNumeros {
     }
 
     /**
-     * 
      * @return devuelve un array bidimensional de enteros de tamaño DIMENSION
      * inicializado con valores aleatorios entre 0 y 10 inclusive
      * 
      * Estos valores van a representar el brillo de una zona del espacio
-     * 
      */
-    public int[][] crearBrillos() {
+    public static int[][] crearBrillos() {
         int[][] brillos = new int[DIMENSION][DIMENSION];
         for (int fila = 0; fila < brillos.length; fila++) {
             for (int col = 0; col < brillos[fila].length; col++) {
@@ -246,8 +245,17 @@ public class ListaNumeros {
      * 
      * Nota -  No hay estrellas en los bordes del array brillos
      */
-    public void detectarEstrellas() {
-        //TODO
-
+    public static boolean[][] detectarEstrellas(int[][] brillos) {
+        boolean[][] estrellas = new boolean[DIMENSION][DIMENSION];
+        for (int i = 1; i < DIMENSION - 1; i++) {
+            for (int j = 1; j < DIMENSION - 1; j++) {
+                int suma = brillos[i+1][j] + brillos[i-1][j] 
+                    + brillos[i][j-1] + brillos[i][j+1];
+                if (suma > 30) {
+                    estrellas[i][j] = true;
+                }
+            }
+        }
+        return estrellas;
     }
 }

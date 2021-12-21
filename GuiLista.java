@@ -128,11 +128,11 @@ public class GuiLista extends Application {
         VBox.setVgrow(btnBuscarBinaria, Priority.ALWAYS);
         btnBuscarBinaria.setOnAction(e -> buscarBinaria());
 
-        // btnEstrellas = new Button("Estrellas en espacio");
-        // btnEstrellas.setMaxSize(Integer.MAX_VALUE, Integer.MAX_VALUE);
-        // VBox.setVgrow(btnEstrellas, Priority.ALWAYS);
-        // btnEstrellas.setId("botonestrellas");
-        // btnEstrellas.setOnAction(e -> detectarEstrellas());
+        btnEstrellas = new Button("Estrellas en espacio");
+        btnEstrellas.setMaxSize(Integer.MAX_VALUE, Integer.MAX_VALUE);
+        VBox.setVgrow(btnEstrellas, Priority.ALWAYS);
+        btnEstrellas.setId("botonestrellas");
+        btnEstrellas.setOnAction(e -> detectarEstrellas());
 
         btnMostrarLista = new Button("Mostrar lista");
         btnMostrarLista.setMaxSize(Integer.MAX_VALUE, Integer.MAX_VALUE);
@@ -211,59 +211,59 @@ public class GuiLista extends Application {
      * Muestra en el área de texto el array2D de estrellas
      * obtenido a partir de la lista
      */
-    // private void detectarEstrellas() {
-        // clear();
+    private void detectarEstrellas() {
+        clear();
 
-        //int[][] brillos = lista.crearBrillos();
-        //boolean[][] estrellas = lista.detectarEstrellas(brillos);
+        int[][] brillos = lista.crearBrillos();
+        boolean[][] estrellas = lista.detectarEstrellas(brillos);
 
-        // GridPane panel2D = crearPanel2D(brillos, estrellas);
-        // Scene escena2D = new Scene(panel2D);
+        GridPane panel2D = crearPanel2D(brillos, estrellas);
+        Scene escena2D = new Scene(panel2D);
 
-        // Stage escenario2D = new Stage();
+        Stage escenario2D = new Stage();
 
-        // escenario2D.setScene(escena2D);
-        // escenario2D.initModality(Modality.WINDOW_MODAL);
-        // escenario2D.initOwner(this.stage);
-        // escenario2D.setX(this.stage.getX() + 200);
-        // escenario2D.setY(this.stage.getY());
-        // escenario2D.setX(this.stage.getX() + this.stage.getWidth() / 2 );
-        // escenario2D.setY(this.stage.getY() + this.stage.getHeight() / 2);
+        escenario2D.setScene(escena2D);
+        escenario2D.initModality(Modality.WINDOW_MODAL);
+        escenario2D.initOwner(this.stage);
+        escenario2D.setX(this.stage.getX() + 200);
+        escenario2D.setY(this.stage.getY());
+        escenario2D.setX(this.stage.getX() + this.stage.getWidth() / 2 );
+        escenario2D.setY(this.stage.getY() + this.stage.getHeight() / 2);
 
-        // escenario2D.setTitle("- Estrellas en el espacio -");
-        // escena2D.getStylesheets()
-        // .add(getClass().getResource("/application.css")
-            // .toExternalForm());
-        // // escenario2D.sizeToScene();
-        // escenario2D.show();
+        escenario2D.setTitle("- Estrellas en el espacio -");
+        escena2D.getStylesheets()
+        .add(getClass().getResource("/application.css")
+            .toExternalForm());
+        // escenario2D.sizeToScene();
+        escenario2D.show();
 
-    // }
-    // private GridPane crearPanel2D(int[][] brillos, boolean[][] estrellas) {
-        // GridPane panel = new GridPane();
-        // panel.setPadding(new Insets(10));
-        // panel.setAlignment(Pos.CENTER);
-        // panel.setHgap(5);
-        // panel.setVgap(5);
+    }
+    private GridPane crearPanel2D(int[][] brillos, boolean[][] estrellas) {
+        GridPane panel = new GridPane();
+        panel.setPadding(new Insets(10));
+        panel.setAlignment(Pos.CENTER);
+        panel.setHgap(5);
+        panel.setVgap(5);
 
-        // for (int f = 0; f < brillos.length; f++) {
-            // for (int c = 0; c < brillos[f].length; c++) {
-                // Button btn = new Button(brillos[f][c] + "");
-                // btn.setPrefSize(60, 60);
-                // btn.setMaxSize(Integer.MAX_VALUE, Integer.MAX_VALUE);
-                // GridPane.setHgrow(btn, Priority.ALWAYS);
-                // GridPane.setVgrow(btn, Priority.ALWAYS);
-                // btn.setStyle(null);
-                // btn.getStyleClass().add("button2D");
-                // if (estrellas[f][c]) {
-                    // btn.getStyleClass().add("button2Dsombreado");
-                // }
+        for (int f = 0; f < brillos.length; f++) {
+            for (int c = 0; c < brillos[f].length; c++) {
+                Button btn = new Button(brillos[f][c] + "");
+                btn.setPrefSize(60, 60);
+                btn.setMaxSize(Integer.MAX_VALUE, Integer.MAX_VALUE);
+                GridPane.setHgrow(btn, Priority.ALWAYS);
+                GridPane.setVgrow(btn, Priority.ALWAYS);
+                btn.setStyle(null);
+                btn.getStyleClass().add("button2D");
+                if (estrellas[f][c]) {
+                    btn.getStyleClass().add("button2Dsombreado");
+                }
 
-                // panel.add(btn, c, f);
+                panel.add(btn, c, f);
 
-            // }
-        // }
-        // return panel;
-    // }
+            }
+        }
+        return panel;
+    }
 
     /**
      * Muestra en el área de texto el segundo máximo
