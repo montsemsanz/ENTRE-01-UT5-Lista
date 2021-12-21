@@ -218,13 +218,13 @@ public class ListaNumeros {
      */
     public static int[][] crearBrillos()
     {
-        int[][] brillos = new int[DIMENSION][DIMENSION];
-        for (int fila = 0; fila < brillos.length; fila++) {
-            for (int col = 0; col < brillos[fila].length; col++) {
-                brillos[fila][col] = generador.nextInt(11);
+        int[][] brillo = new int[DIMENSION][DIMENSION];
+        for (int f = 0; f < brillo.length; f++) {
+            for (int c = 0; c < brillo[f].length; c++) {
+                brillo[f][c] = generador.nextInt(11);
             }
         }
-        return brillos;
+        return brillo;
     }
 
     /**
@@ -239,8 +239,18 @@ public class ListaNumeros {
      * 
      * Nota -  No hay estrellas en los bordes del array brillos
      */
-    public void detectarEstrellas() {
-        //TODO
+        public static boolean[][] detectarEstrellas(int [][] brillos) {
+        boolean [][] estrella = new boolean[DIMENSION][DIMENSION];
+        brillos = crearBrillos();
+        for(int f = 1; f < brillos.length -1; f++){
+            for(int c = 1; c < brillos[f].length -1; c++) {
+                int suma = brillos[f][c] + brillos[f][c] + brillos[f][c] + brillos[f][c];
+                if(suma > 30) {
+                    estrella[f][c] = true;
+                }
 
+            }
+        }
+        return estrella;
     }
 }
