@@ -224,9 +224,9 @@ public class ListaNumeros {
     public static int[][] crearBrillos() {
         int[][] brillos = new int[DIMENSION][DIMENSION];
         
-        for(int i = 0; i <= brillos.length; i++){
+        for(int i = 0; i <= brillos.length - 1; i++){
         
-            for(int j = 0; j <= brillos[i].length;j++){
+            for(int j = 0; j <= brillos[i].length - 1;j++){
                 int numero = generador.nextInt(11);
                 brillos[i][j] = numero;
                             
@@ -251,9 +251,9 @@ public class ListaNumeros {
      */
     public static boolean[][] detectarEstrellas(int[][] brillos) {
         boolean[][] estrellas = new boolean [brillos.length][brillos[1].length];
-        for(int i = 0; i <= brillos.length; i++){
+        for(int i = 1; i <= brillos.length - 2; i++){
         
-            for(int j = 0; j <= brillos[i].length;j++){
+            for(int j = 1; j <= brillos[i].length - 2;j++){
                 
                 if(brillos[i-1][j] + brillos[i+1][j] + brillos[i][j-1] + brillos[i][j+1] > 30){
                 
