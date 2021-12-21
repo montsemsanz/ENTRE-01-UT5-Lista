@@ -94,13 +94,13 @@ public class ListaNumeros {
         else {
             String salida = "";
             salida += guion(6 * pos);
-            salida += "\n";
-            for (int i = 0;i < lista.length;i++) {
+            salida +="\n";
+            for (int i = 0;i < pos;i++) {
 
                 salida += Utilidades.centrarNumero(lista[i],ANCHO_FORMATO);
 
             }
-            salida += "\n";
+            salida +="\n";
             salida += guion(6 * pos);
             return salida;
         }
@@ -147,41 +147,40 @@ public class ListaNumeros {
      */
     public int segundoMaximo() {      
         int maximo = Integer.MIN_VALUE;
-        int maximo2 = Integer.MIN_VALUE;
-        boolean verificador = false;
+        int segundomax = Integer.MIN_VALUE;
+        boolean comprobar = false;
         if (pos == 1) {
-            maximo2 = Integer.MIN_VALUE;
-            return maximo2;
+            return segundomax;
         }
 
-        for(int i = 0; i < lista.length;i++) {
+        
+        if( comprobar) {
+            segundomax = Integer.MIN_VALUE;
+        }
+        for(int i = 0; i < pos;i++) {
+            if (lista[i] > segundomax && lista[i] < maximo) {
+                segundomax = lista [i];
+
+            }
+
+        }
+        for(int i = 0; i < pos;i++) {
             if (lista[i] > maximo) {
                 maximo = lista [i];
-
             }
 
         }
-        if( verificador) {
-            maximo2 = Integer.MIN_VALUE;
-        }
-        for(int i = 0; i < lista.length;i++) {
-            if (lista[i] > maximo2 && lista[i] < maximo) {
-                maximo2 = lista [i];
-
-            }
-
-        }
-        for(int i = 1; i < lista.length;i++) {
+        for(int i = 1; i < pos;i++) {
             if(lista[i] == lista[i - 1]) {
-                verificador = true;
+                comprobar = true;
             }
             else {
-                verificador = false;
-                return maximo2;
+                comprobar = false;
+                return segundomax;
             }
         }
 
-        return maximo2;
+        return segundomax;
     }
 
     /**
@@ -274,9 +273,9 @@ public class ListaNumeros {
     public static boolean[][] detectarEstrellas(int [][] matriz) {
         boolean [][] resultado = new boolean[DIMENSION][DIMENSION];
         matriz = crearBrillos();
-        for(int fila = 0; fila < matriz.length;fila++) {
-            for(int colum = 0;colum < matriz[fila].length;colum++) {
-                int conjunto = matriz[fila][colum] + matriz[fila][colum] + matriz[fila][colum]+ matriz[fila][colum];
+        for(int fila = 1; fila < matriz.length -1;fila++) {
+            for(int colum = 1;colum < matriz[fila].length - 1;colum++) {
+                int conjunto = matriz[fila][colum + 1] + matriz[fila + 1][colum] + matriz[fila - 1][colum]+ matriz[fila][colum];
                 if(30 < conjunto) {
                     resultado[fila][colum] = true;
                 }
