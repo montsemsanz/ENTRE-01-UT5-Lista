@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 /**
  * Un objeto de esta clase
  * guarda una lista de números enteros
@@ -91,8 +92,9 @@ public class ListaNumeros {
      */
     public String toString() {
         String str = "";
+
         for(int i = 0; i < lista.length; i++)   {
-            str = str + String.format("%6d", lista[i]);
+            str = str + String.format("%ANCHO_FORMATOd", lista[i]);
 
         }
 
@@ -118,11 +120,22 @@ public class ListaNumeros {
      * Si lista = {21} se devuelve Integer.MIN_VALUE
      * Si lista = {21, 21, 21, 21} se devuelve Integer.MIN_VALUE
      * 
-     * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
+     * No se puede usar ningún otro array auxiliar ni hay que
+     * ordenar previamente
      * la lista
      */
-    public void segundoMaximo() {       
-        //TODO
+    public int segundoMaximo() {       
+        int numMax = 0;
+        int segundoNumMax = 0;
+
+        for(int i = 0; i < pos; i++) {
+            if(numMax < lista[i]){
+                segundoNumMax = numMax;
+                numMax = lista[i];
+            }
+        }
+
+        return segundoNumMax;
 
     }
 
@@ -143,9 +156,19 @@ public class ListaNumeros {
      * @return true si se han colocado los segundos máximos
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
-    public void segundosMaximosAlPrincipio() {
-        //TODO
-
+    public boolean segundosMaximosAlPrincipio() {
+        int segundoMax = segundoMaximo();
+        
+        for(int i = 0; i < pos - 1; i++) {
+            if(segundoMax != lista[i]){
+                lista[1] = lista[0];
+                lista[0] = segundoMax;
+                return true;
+            }
+            
+        }
+        
+        return false;
     }
 
     /**
@@ -158,9 +181,12 @@ public class ListaNumeros {
      *  
      * Usa exclusivamente métodos de la clase Arrays
      */
-    public void buscarBinario() {
-        //TODO
-
+    public int buscarBinario(int numero) {
+        int[] copia = new int[lista.length];
+        System.arraycopy(lista, 0, copia, 0, lista.length);
+       
+        int index = Arrays.binarySearch(copia, numero);
+        return index;
     }
 
     /**
@@ -172,8 +198,15 @@ public class ListaNumeros {
      * 
      */
     public void crearBrillos() {
-        //TODO
-
+        int[][] brillos = new int[DIMENSION][DIMENSION];
+        int aleatorio = (int)(Math.random() * 11) + 0;
+        
+        for(int i = 0; i < brillos.length; i++){
+            for(int j = 0; j < brillos[j].length; j++) {
+             
+                brillos[i][j] = aleatorio;
+            }
+        }
     }
 
     /**

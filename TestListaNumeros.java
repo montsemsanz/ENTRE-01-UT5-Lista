@@ -60,24 +60,25 @@ public class TestListaNumeros
     public static void testToString(ListaNumeros lista) {
         System.out.println(lista.toString());
     }
+}
 
 
-    public static void testSegundoMaximo(ListaNumeros lista) {        
-        int segundo = lista.segundoMaximo();
-        if (segundo == Integer.MIN_VALUE) {
-            System.out.println("No hay segundo máximo\n");
-        }
-        else {
-            System.out.println("El valor segundo máximo es : " + segundo);
-        }
+    // public static void testSegundoMaximo(ListaNumeros lista) {        
+        // int segundo = lista.segundoMaximo();
+        // if (segundo == Integer.MIN_VALUE) {
+            // System.out.println("No hay segundo máximo\n");
+        // }
+        // else {
+            // System.out.println("El valor segundo máximo es : " + segundo);
+        // }
 
-    }
+    // }
 
-    public static void testSegundosPrincipio(ListaNumeros lista) {
-        System.out.println("Después de colocar los segundos máximos al principio");
-        boolean exito = lista.segundosMaximosAlPrincipio();
-        if (!exito) {
-            System.out.println("No había segundo máximo\n");
+    // public static void testSegundosPrincipio(ListaNumeros lista) {
+        // System.out.println("Después de colocar los segundos máximos al principio");
+        // boolean exito = lista.segundosMaximosAlPrincipio();
+        // if (!exito) {
+            // System.out.println("No había segundo máximo\n");
         }
         else {
             System.out.println(lista.toString());
