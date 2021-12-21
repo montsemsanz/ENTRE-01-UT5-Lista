@@ -97,6 +97,16 @@ public class ListaNumeros {
      */
     public String toString() {
         String str = "";
+        if(pos != 0){
+            for(int i = 0; i <= pos - 1; i++){
+            
+                str+= String.format("%ANCHO_FORMATOd",lista[i]);
+            
+            }
+        
+        
+        
+        }
 
         return str;
     }
@@ -226,20 +236,20 @@ public class ListaNumeros {
         return brillos;
     }
 
-    /**
-     * @param  un array bidimensional brillos 
-     * @return un nuevo array bidimensional de valores booleanos
-     *          de las mismas dimensiones que el array brillos con
-     *          valores true en las posiciones donde hay estrellas
-     * 
-     * Una posición f,c del array brillos es una estrella 
-     * si la suma del valor de los brillos de sus cuatro vecinos 
-     * (arriba, abajo, derecha e izquierda) es mayor que 30
-     * 
-     * Nota -  No hay estrellas en los bordes del array brillos
-     */
-    public void detectarEstrellas() {
-        //TODO
+    // /**
+     // * @param  un array bidimensional brillos 
+     // * @return un nuevo array bidimensional de valores booleanos
+     // *          de las mismas dimensiones que el array brillos con
+     // *          valores true en las posiciones donde hay estrellas
+     // * 
+     // * Una posición f,c del array brillos es una estrella 
+     // * si la suma del valor de los brillos de sus cuatro vecinos 
+     // * (arriba, abajo, derecha e izquierda) es mayor que 30
+     // * 
+     // * Nota -  No hay estrellas en los bordes del array brillos
+     // */
+    // public int[][] detectarEstrellas(int[][] brillos) {
+        // //TODO
 
-    }
+    // }
 }
