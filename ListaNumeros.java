@@ -97,10 +97,11 @@ public class ListaNumeros {
      */
     public String toString() {
         String str = "";
+        Utilidades util = new Utilidades();
         if(pos != 0){
             for(int i = 0; i <= pos - 1; i++){
             
-                str+= String.format("%ANCHO_FORMATOd",lista[i]);
+                str+= util.centrarNumero(lista[i], ANCHO_FORMATO) ;
             
             }
         
@@ -249,7 +250,7 @@ public class ListaNumeros {
      // * Nota -  No hay estrellas en los bordes del array brillos
      // */
     // public int[][] detectarEstrellas(int[][] brillos) {
-        // //TODO
+        // TODO
 
     // }
 }
