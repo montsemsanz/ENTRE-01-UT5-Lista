@@ -159,7 +159,7 @@ public class ListaNumeros {
                 if(max2 == 0){
                     max2 = num;
                 }
-                if(max == num && max2 == num){
+                else if(max == num && max2 == num){
                     max2 = Integer.MIN_VALUE;
                 }
             }
@@ -220,9 +220,9 @@ public class ListaNumeros {
      */
     public int buscarBinario(int numero) {
         int[] copia = Arrays.copyOf(lista, lista.length);
-        Arrays.sort(copia, 0 , pos);
+        Arrays.sort(copia, 0, pos);
         int posi = 0;
-        int bin = Arrays.binarySearch(lista, 0, pos, numero);
+        int bin = Arrays.binarySearch(copia, 0, pos, numero);
         if(bin >= 0){
             posi = bin;
         }
