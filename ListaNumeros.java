@@ -134,9 +134,20 @@ public class ListaNumeros {
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
      * la lista
      */
-    public void segundoMaximo() {       
-        //TODO
-
+    public int segundoMaximo() {       
+        int primerMax = Integer.MIN_VALUE;
+        for(int i = 0; i< pos; i++){
+            if(lista[i] > primerMax){
+                primerMax = lista[i];
+            }
+        }
+        int segundoMax = Integer.MIN_VALUE;
+        for(int j = 0; j< pos; j++){
+            if(lista[j] > segundoMax && lista[j] < primerMax){
+                segundoMax = lista[j];
+            }
+        }
+        return segundoMax;
     }
 
     /**
@@ -155,8 +166,8 @@ public class ListaNumeros {
      * @return true si se han colocado los segundos máximos
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
-    public void segundosMaximosAlPrincipio() {
-        //TODO
+    public boolean segundosMaximosAlPrincipio() {
+        return false;
 
     }
 
@@ -189,7 +200,7 @@ public class ListaNumeros {
      * Estos valores van a representar el brillo de una zona del espacio
      * 
      */
-    public int[][] crearBrillos() {
+    public static int[][] crearBrillos() {
         int[][] brillo = new int[DIMENSION][DIMENSION];
         for(int i = 0; i < DIMENSION; i++){
             for(int j = 0; j<brillo[i].length;j++){
@@ -212,7 +223,7 @@ public class ListaNumeros {
      * 
      * Nota -  No hay estrellas en los bordes del array brillos
      */
-    public boolean[][] detectarEstrellas(int[][] brillos) {
+    public static boolean[][] detectarEstrellas(int[][] brillos) {
         int suma = 0;
         boolean[][] estrella =  new boolean[brillos.length][brillos[0].length];
         for(int f = 1; f < brillos.length-1; f++){
