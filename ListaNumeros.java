@@ -10,9 +10,7 @@
  * @author - Alejandro Torreguitart
  */
 
-
 import java.util.Random;
-
 public class ListaNumeros {
     public static final int DIMENSION = 10;
     public static final int ANCHO_FORMATO = 6;
@@ -21,7 +19,7 @@ public class ListaNumeros {
     private static final Random generador = new Random();
     private int lista[];
     private int pos;
-    
+
     /**
      * Constructor de la clase ListaNumeros
      * Crea e inicializa adecuadamente los
@@ -63,7 +61,7 @@ public class ListaNumeros {
      * Hacer sin if
      */
     public boolean estaVacia() {
-       return pos == 0;
+        return pos == 0;
     }
 
     /**
@@ -77,7 +75,7 @@ public class ListaNumeros {
      * Vacía la lista
      */
     public void vaciarLista() {
-       pos = 0;
+        pos = 0;
     }
 
     /**
@@ -87,14 +85,10 @@ public class ListaNumeros {
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-       //TODO
-       
-       
-       
-       return "";
-    }
+        //TODO
 
-     
+        return "";
+    }
 
     /**
      * Mostrar en pantalla la lista
@@ -119,15 +113,15 @@ public class ListaNumeros {
      * la lista
      */
     public int segundoMaximo() {    
-       int max = 0;
-       int segundoMaximo = 0;
-       for(int i = 1 ; i < lista.length ; i++){
-           max = Math.max(max,lista[i]);
-           if(lista[i] < max && lista[i] > segundoMaximo){
-               segundoMaximo = lista[i];
-           }
-       }
-       return segundoMaximo;
+        int max = 0;
+        int segundoMaximo = 0;
+        for(int i = 0 ; i < lista.length ; i++){
+            max = Math.max(max,lista[i]);
+            if(lista[i] > segundoMaximo && lista[i] < max){
+                segundoMaximo = lista[i];
+            }
+        }
+        return segundoMaximo;
     }
 
     /**
@@ -148,10 +142,17 @@ public class ListaNumeros {
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
     public void segundosMaximosAlPrincipio() {
-        //TODO
-        
-        
-
+        int segundoMaximo = segundoMaximo();
+        for(int i = 1 ; i < lista.length ; i++){
+            int digito = lista[i];
+            if(lista[i] == segundoMaximo){
+                lista[i] = segundoMaximo;
+            }
+            else{
+                lista[i - 1] = lista[i];
+            }
+            System.out.println(lista[i]);
+        }
     }
 
     /**
@@ -165,9 +166,7 @@ public class ListaNumeros {
      * Usa exclusivamente métodos de la clase Arrays
      */
     public void buscarBinario() {
-         //TODO
-         
-         
+        //TODO
 
     }
 
@@ -179,11 +178,14 @@ public class ListaNumeros {
      * Estos valores van a representar el brillo de una zona del espacio
      * 
      */
-    public void crearBrillos() {
-       //TODO
-       
-       
-
+    public int[][] crearBrillos() {
+        int brillos[][] = new int[DIMENSION][DIMENSION];
+        for(int filas = 0 ; filas < brillos.length ; filas++){
+            for(int col = 0 ; col < brillos.length ; col++){
+                brillos[filas][col] = generador.nextInt(11);
+            }
+        }
+        return brillos;
     }
 
     /**
@@ -199,10 +201,6 @@ public class ListaNumeros {
      * Nota -  No hay estrellas en los bordes del array brillos
      */
     public void detectarEstrellas() {
-       //TODO
-       
-       
-       
+        
     }
-
 }
