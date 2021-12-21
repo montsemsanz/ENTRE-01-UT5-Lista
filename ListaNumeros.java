@@ -106,7 +106,6 @@ public class ListaNumeros {
     public String toString() {
         String cadena = "";
         if (estaVacia()) {
-            System.out.println("clean");
             return "";
 
         }
@@ -191,9 +190,18 @@ public class ListaNumeros {
      *  
      * Usa exclusivamente métodos de la clase Arrays
      */
-    public void buscarBinario() {
-        //TODO
-
+    public int buscarBinario(int numero) {
+        int [] copiaLista = Arrays.copyOf(lista, lista.length);
+        int valor = -1;
+        if(Arrays.binarySearch(copiaLista, numero) > valor){
+            for(int i = 0; i < copiaLista.length; i++){
+                if(lista[i] == numero){
+                    valor = i;
+                    return valor;
+                }
+            }
+        }
+        return valor;
     }
 
     /**
@@ -204,9 +212,14 @@ public class ListaNumeros {
      * Estos valores van a representar el brillo de una zona del espacio
      * 
      */
-    public void crearBrillos() {
-        //TODO
-
+    public static int[][] crearBrillos() {
+        int [][] brillo = new int[DIMENSION][DIMENSION];
+        for (int fila = 0; fila < DIMENSION; fila++) {
+            for (int columna = 0; columna < DIMENSION; columna++) {
+                brillo[fila][columna] = generador.nextInt(10) + 1;
+            }
+        }
+        return brillo;
     }
 
     /**
@@ -221,8 +234,20 @@ public class ListaNumeros {
      * 
      * Nota -  No hay estrellas en los bordes del array brillos
      */
-    public void detectarEstrellas() {
-        //TODO
-
+    public static boolean[][] detectarEstrellas(int [][] brillos) {
+        boolean [][] hayEstrella = new boolean[brillos.length][brillos.length];
+        int [][]copia = crearBrillos();
+        for (int i = 0; i < copia.length; i++) {
+            for (int j = 0; j < copia[0].length; j++) {
+                int valorAlRededor = copia[i - 1][j - 1] + copia[i - 1][j] + copia[i - 1][j + 1] + copia[i][j - 1] + copia[i][j + 1] + 
+                copia[i + 1][j - 1] + copia[i + 1][j] + copia[i + 1][j + 1];
+                if (valorAlRededor > 30) {
+                    hayEstrella[i][j] = true;
+                }
+                hayEstrella[i][j] = false;
+            }
+        }
+        
+        return hayEstrella;
     }
 }
