@@ -92,15 +92,15 @@ public class ListaNumeros {
         if(!estaVacia()){
             str += escribirLinea();
             str += "\n";
-            for (int c = 0; c < pos; c++){
-                str += Utilidades.centrarNumero(lista[c], ANCHO_FORMATO); 
+            for (int i = 0; i < pos; i++){
+                str += Utilidades.centrarNumero(lista[i], ANCHO_FORMATO); 
             }
             str += "\n";
             str += escribirLinea();
         }
         return str;
     }
-    
+
     /**
      * Escribe la línea de puntos
      */
@@ -108,8 +108,8 @@ public class ListaNumeros {
     {
         String linea = "";
         for (int i = 1; i <= ANCHO_FORMATO * pos; i++){
-                linea += CAR_CABECERA;
-            }
+            linea += CAR_CABECERA;
+        }
         return linea;
     }
 
@@ -173,15 +173,13 @@ public class ListaNumeros {
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
     public boolean segundosMaximosAlPrincipio() {
-        if(segundoMaximo() != Integer.MIN_VALUE){
+        int segundoMaximo = segundoMaximo();
+        if(segundoMaximo != Integer.MIN_VALUE){
             for(int i = 0; i < pos; i++){
-                if(lista[i] == segundoMaximo()){
+                if(lista[i] == segundoMaximo){
                     int valor = lista[i];
-                    System.arraycopy(lista,i + 1, lista, i, pos - i - 1);
-                    pos--;
-                    System.arraycopy(lista,0,lista,1,pos);
+                    System.arraycopy(lista,0,lista,1,i);
                     lista[0] = valor;
-                    pos++;
                 }
             }
         }
@@ -242,11 +240,21 @@ public class ListaNumeros {
         boolean [][]estrellas = new boolean [brillos.length][brillos[0].length];
         for (int fila = 1 ; fila < estrellas.length - 1; fila++){
             for(int columna = 1; columna < estrellas[fila].length - 1; columna++){
-                if(brillos[fila - 1][columna] + brillos[fila][columna - 1] + brillos[fila + 1][columna] + brillos[fila][columna + 1] > 30){
+                if(mayorQue30(brillos,fila,columna)){
                     estrellas[fila][columna] = true;
                 } 
             }
         }
         return estrellas;
     }
+    
+    /**
+     * @ param la posición en el array
+     * @return devuelve true si la suma de los vecinos es mayor que 30
+     */
+    private static boolean mayorQue30(int[][] brillos,int f, int c)
+    {
+        return brillos[f - 1][c] + brillos[f][c - 1] + brillos[f + 1][c] + brillos[f][c + 1] > 30 ;
+    }
+
 }
